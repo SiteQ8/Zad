@@ -370,3 +370,34 @@ PATHS = [
      "جرّب أداة واحدة من مسار يثير اهتمامك، والاختيار قابل للعدول عنه.",
      ["zaproxy/zaproxy", "SigmaHQ/sigma", "Fortiphyd/GRFICSv3"]),
 ]
+
+# The catalogue is large enough that showing all of it to someone who has just
+# arrived is unhelpful. For each path these are the few things to touch first,
+# in order. This is editorial judgement rather than a metric, which is exactly
+# why it has to be written down and checked rather than left implicit.
+ESSENTIALS = {
+    "start": ["https://portswigger.net/web-security", "https://tryhackme.com/",
+              "digininja/DVWA", "wireshark/wireshark", "https://overthewire.org/wargames/"],
+    "ctf": ["https://ctftime.org/", "https://picoctf.org/",
+            "NationalSecurityAgency/ghidra", "Gallopsled/pwntools", "hugsy/gef"],
+    "red": ["nmap/nmap", "https://www.hackthebox.com/", "danielmiessler/SecLists",
+            "swisskyrepo/PayloadsAllTheThings", "rapid7/metasploit-framework",
+            "https://gtfobins.org/"],
+    "blue": ["https://attack.mitre.org/", "SigmaHQ/sigma", "https://thedfirreport.com/",
+             "Yamato-Security/hayabusa", "wazuh/wazuh", "https://cyberdefenders.org/"],
+    "appsec": ["https://portswigger.net/web-security", "zaproxy/zaproxy",
+               "OWASP/wstg", "semgrep/semgrep", "aquasecurity/trivy"],
+    "cloud": ["prowler-cloud/prowler", "bridgecrewio/checkov",
+              "aquasecurity/kube-bench", "aquasecurity/trivy"],
+    "grc": ["https://www.nist.gov/cyberframework", "https://www.cisecurity.org/controls",
+            "CISOfy/lynis", "ComplianceAsCode/content", "https://siteq8.github.io/Markaz/"],
+    "intel": ["https://attack.mitre.org/", "MISP/MISP", "https://www.shodan.io/",
+              "https://crt.sh/", "https://urlscan.io/"],
+    "ics": ["Fortiphyd/GRFICSv3", "mushorg/conpot", "ITI/ICS-Security-Tools",
+            "https://www.shodan.io/"],
+    "mobile": ["MobSF/Mobile-Security-Framework-MobSF", "frida/frida",
+               "skylot/jadx", "OWASP/owasp-mastg"],
+    "hardware": ["ReFirmLabs/binwalk", "RfidResearchGroup/proxmark3", "gnuradio/gnuradio"],
+    "research": ["NationalSecurityAgency/ghidra", "mandiant/capa", "VirusTotal/yara",
+                 "https://any.run/", "https://bazaar.abuse.ch/"],
+}

@@ -11,13 +11,16 @@ So the classification is deliberate:
   ok          answered normally
   moved       answered, but from a different host than the one we asked for
   blocked     refused the automated request, which says nothing about the site
-  dead        answered with an error that means the page is gone
+  down        the server answered with a fault of its own, so it is broken now
+              rather than gone, and may well be fine tomorrow
+  dead        answered that the page does not exist
   unreachable no answer at all
 
-Only dead and unreachable are treated as failures. A blocked resource is kept
-and labelled, because Cloudflare turning away a script is not evidence that a
-training platform has shut down, and pretending otherwise would quietly delete
-the most popular sites in the catalogue.
+Only dead and unreachable are treated as failures. Blocked and down resources
+are kept and labelled, because Cloudflare turning away a script is not evidence
+that a training platform has shut down, and a certificate search returning a
+gateway error on a bad afternoon is not evidence that it has closed. Pretending
+otherwise would quietly delete the most used services in the catalogue.
 """
 
 import concurrent.futures
@@ -50,9 +53,12 @@ def check(url):
             state = "moved" if host(final) != host(url) else "ok"
             return {"state": state, "status": r.status, "final": final}
     except urllib.error.HTTPError as e:
-        # 401, 403 and 429 mean a bot filter, not a missing page.
-        if e.code in (401, 403, 405, 406, 429, 503):
+        # A bot filter refusing a script says nothing about the resource.
+        if e.code in (401, 403, 405, 406, 429):
             return {"state": "blocked", "status": e.code, "final": url}
+        # A server fault means broken today, not gone. Keep it and say so.
+        if e.code >= 500:
+            return {"state": "down", "status": e.code, "final": url}
         return {"state": "dead", "status": e.code, "final": url}
     except Exception as e:
         return {"state": "unreachable", "status": 0, "final": url,

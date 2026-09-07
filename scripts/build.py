@@ -25,7 +25,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "data"))
-from seed import CATEGORIES, PATHS, ROLES, TOOLS  # noqa: E402
+from seed import CATEGORIES, ESSENTIALS, PATHS, ROLES, TOOLS  # noqa: E402
 from web import KINDS, WEB  # noqa: E402
 sys.path.insert(0, str(ROOT / "scripts"))
 from webcheck import check_all  # noqa: E402
@@ -158,6 +158,46 @@ def main():
         st[s["state"]] = st.get(s["state"], 0) + 1
     print(f"web: {len(sites)} live, {len(site_faults)} failed, states {st}")
 
+    # Essentials are advice, so they get the same treatment as the starting path:
+    # they must exist, and they must not point at anything that has stopped.
+    # Index by both the canonical name and the name written in the seed, so a
+    # rename upstream cannot silently break a curated recommendation.
+    tools_by = {e["repo"].lower(): e for e in entries}
+    for old, new in renamed:
+        hit = [e for e in entries if e["repo"] == new]
+        if hit:
+            tools_by[old.lower()] = hit[0]
+    sites_by = {s["requested"].lower(): s for s in sites}
+    ess, ess_faults = {}, []
+    for rid, picks in ESSENTIALS.items():
+        if rid not in {r[0] for r in ROLES}:
+            ess_faults.append(f"essentials for unknown role {rid}")
+            continue
+        resolved = []
+        for pick in picks:
+            key = pick.lower()
+            if key in tools_by:
+                hit = tools_by[key]
+                if hit["upkeep"] in ("archived", "dormant"):
+                    ess_faults.append(f"{rid}: {hit['repo']} is {hit['upkeep']}")
+                if rid not in hit["roles"]:
+                    ess_faults.append(f"{rid}: {hit['repo']} is not tagged with this role")
+                resolved.append({"kind": "repo", "id": hit["repo"]})
+            elif key in sites_by:
+                hit = sites_by[key]
+                if rid not in hit["roles"]:
+                    ess_faults.append(f"{rid}: {hit['requested']} is not tagged with this role")
+                resolved.append({"kind": "site", "id": hit["requested"]})
+            else:
+                ess_faults.append(f"{rid}: {pick} is not in the catalogue")
+        ess[rid] = resolved
+    missing = [r[0] for r in ROLES if r[0] not in ess]
+    for m in missing:
+        ess_faults.append(f"role {m} has no essentials")
+    if ess_faults:
+        print("\nEssentials check failed:", *ess_faults, sep="\n  ", file=sys.stderr)
+        sys.exit(1)
+
     counts = {}
     for e in entries:
         counts[e["upkeep"]] = counts.get(e["upkeep"], 0) + 1
@@ -190,6 +230,7 @@ def main():
         "categories": {k: {"en": v[0], "ar": v[1]} for k, v in CATEGORIES.items()},
         "kinds": {k: {"en": v[0], "ar": v[1]} for k, v in KINDS.items()},
         "paths": paths,
+        "essentials": ess,
         "stats": {
             "tools": len(entries),
             "sites": len(sites),

@@ -308,16 +308,271 @@
       ]
     }
   ],
+  "essentials": {
+    "start": [
+      {
+        "kind": "site",
+        "id": "https://portswigger.net/web-security"
+      },
+      {
+        "kind": "site",
+        "id": "https://tryhackme.com/"
+      },
+      {
+        "kind": "repo",
+        "id": "digininja/DVWA"
+      },
+      {
+        "kind": "repo",
+        "id": "wireshark/wireshark"
+      },
+      {
+        "kind": "site",
+        "id": "https://overthewire.org/wargames/"
+      }
+    ],
+    "ctf": [
+      {
+        "kind": "site",
+        "id": "https://ctftime.org/"
+      },
+      {
+        "kind": "site",
+        "id": "https://picoctf.org/"
+      },
+      {
+        "kind": "repo",
+        "id": "NationalSecurityAgency/ghidra"
+      },
+      {
+        "kind": "repo",
+        "id": "Gallopsled/pwntools"
+      },
+      {
+        "kind": "repo",
+        "id": "hugsy/gef"
+      }
+    ],
+    "red": [
+      {
+        "kind": "repo",
+        "id": "nmap/nmap"
+      },
+      {
+        "kind": "site",
+        "id": "https://www.hackthebox.com/"
+      },
+      {
+        "kind": "repo",
+        "id": "danielmiessler/SecLists"
+      },
+      {
+        "kind": "repo",
+        "id": "swisskyrepo/PayloadsAllTheThings"
+      },
+      {
+        "kind": "repo",
+        "id": "rapid7/metasploit-framework"
+      },
+      {
+        "kind": "site",
+        "id": "https://gtfobins.org/"
+      }
+    ],
+    "blue": [
+      {
+        "kind": "site",
+        "id": "https://attack.mitre.org/"
+      },
+      {
+        "kind": "repo",
+        "id": "SigmaHQ/sigma"
+      },
+      {
+        "kind": "site",
+        "id": "https://thedfirreport.com/"
+      },
+      {
+        "kind": "repo",
+        "id": "Yamato-Security/hayabusa"
+      },
+      {
+        "kind": "repo",
+        "id": "wazuh/wazuh"
+      },
+      {
+        "kind": "site",
+        "id": "https://cyberdefenders.org/"
+      }
+    ],
+    "appsec": [
+      {
+        "kind": "site",
+        "id": "https://portswigger.net/web-security"
+      },
+      {
+        "kind": "repo",
+        "id": "zaproxy/zaproxy"
+      },
+      {
+        "kind": "repo",
+        "id": "OWASP/wstg"
+      },
+      {
+        "kind": "repo",
+        "id": "semgrep/semgrep"
+      },
+      {
+        "kind": "repo",
+        "id": "aquasecurity/trivy"
+      }
+    ],
+    "cloud": [
+      {
+        "kind": "repo",
+        "id": "prowler-cloud/prowler"
+      },
+      {
+        "kind": "repo",
+        "id": "bridgecrewio/checkov"
+      },
+      {
+        "kind": "repo",
+        "id": "aquasecurity/kube-bench"
+      },
+      {
+        "kind": "repo",
+        "id": "aquasecurity/trivy"
+      }
+    ],
+    "grc": [
+      {
+        "kind": "site",
+        "id": "https://www.nist.gov/cyberframework"
+      },
+      {
+        "kind": "site",
+        "id": "https://www.cisecurity.org/controls"
+      },
+      {
+        "kind": "repo",
+        "id": "CISOfy/lynis"
+      },
+      {
+        "kind": "repo",
+        "id": "ComplianceAsCode/content"
+      },
+      {
+        "kind": "site",
+        "id": "https://siteq8.github.io/Markaz/"
+      }
+    ],
+    "intel": [
+      {
+        "kind": "site",
+        "id": "https://attack.mitre.org/"
+      },
+      {
+        "kind": "repo",
+        "id": "MISP/MISP"
+      },
+      {
+        "kind": "site",
+        "id": "https://www.shodan.io/"
+      },
+      {
+        "kind": "site",
+        "id": "https://crt.sh/"
+      },
+      {
+        "kind": "site",
+        "id": "https://urlscan.io/"
+      }
+    ],
+    "ics": [
+      {
+        "kind": "repo",
+        "id": "Fortiphyd/GRFICSv3"
+      },
+      {
+        "kind": "repo",
+        "id": "mushorg/conpot"
+      },
+      {
+        "kind": "repo",
+        "id": "ITI/ICS-Security-Tools"
+      },
+      {
+        "kind": "site",
+        "id": "https://www.shodan.io/"
+      }
+    ],
+    "mobile": [
+      {
+        "kind": "repo",
+        "id": "MobSF/Mobile-Security-Framework-MobSF"
+      },
+      {
+        "kind": "repo",
+        "id": "frida/frida"
+      },
+      {
+        "kind": "repo",
+        "id": "skylot/jadx"
+      },
+      {
+        "kind": "repo",
+        "id": "OWASP/mastg"
+      }
+    ],
+    "hardware": [
+      {
+        "kind": "repo",
+        "id": "ReFirmLabs/binwalk"
+      },
+      {
+        "kind": "repo",
+        "id": "RfidResearchGroup/proxmark3"
+      },
+      {
+        "kind": "repo",
+        "id": "gnuradio/gnuradio"
+      }
+    ],
+    "research": [
+      {
+        "kind": "repo",
+        "id": "NationalSecurityAgency/ghidra"
+      },
+      {
+        "kind": "repo",
+        "id": "mandiant/capa"
+      },
+      {
+        "kind": "repo",
+        "id": "VirusTotal/yara"
+      },
+      {
+        "kind": "site",
+        "id": "https://any.run/"
+      },
+      {
+        "kind": "site",
+        "id": "https://bazaar.abuse.ch/"
+      }
+    ]
+  },
   "stats": {
     "tools": 114,
     "sites": 64,
     "site_states": {
-      "ok": 57,
+      "ok": 56,
       "moved": 2,
-      "blocked": 5
+      "blocked": 5,
+      "down": 1
     },
     "unresolved": 0,
-    "stars": 1802402,
+    "stars": 1802407,
     "upkeep": {
       "active": 105,
       "slow": 5,
@@ -352,7 +607,7 @@
       "note": "A wide index of tools and one-liners. Useful for finding out what exists.",
       "description": "A collection of inspiring lists, manuals, cheatsheets, blogs, hacks, one-liners, cli/web tools and more.",
       "language": "",
-      "stars": 242429,
+      "stars": 242431,
       "licence": "MIT",
       "archived": false,
       "pushed": "2024-11-19",
@@ -756,7 +1011,7 @@
       "note": "Secret scanning that verifies whether a found credential is actually live.",
       "description": "Find, verify, and analyze leaked credentials",
       "language": "Go",
-      "stars": 27704,
+      "stars": 27705,
       "licence": "AGPL-3.0",
       "archived": false,
       "pushed": "2026-09-07",
@@ -952,7 +1207,7 @@
       "note": "Static and dynamic analysis for Android and iOS in one place. The usual first stop.",
       "description": "Mobile Security Framework (MobSF) is an automated, all-in-one mobile application (Android/iOS/Windows) pen-testing, malware analysis and security assessment framework capable of performing static and dynamic analysis.",
       "language": "JavaScript",
-      "stars": 21715,
+      "stars": 21716,
       "licence": "GPL-3.0",
       "archived": false,
       "pushed": "2026-09-02",
@@ -1091,7 +1346,7 @@
       "note": "Collects emails, subdomains and hosts from public sources. An early recon step.",
       "description": "E-mails, subdomains and names Harvester - OSINT",
       "language": "Python",
-      "stars": 17313,
+      "stars": 17314,
       "licence": "",
       "archived": false,
       "pushed": "2026-09-07",
@@ -4540,8 +4795,8 @@
         "red"
       ],
       "note": "Certificate transparency search. Finds subdomains that never appear in DNS lists.",
-      "state": "ok",
-      "status": 200,
+      "state": "down",
+      "status": 502,
       "host": "crt.sh"
     },
     {
