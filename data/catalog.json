@@ -58,6 +58,27 @@
       "arD": "جمع ما هو معلوم عن التهديدات وحفظه ومشاركته."
     },
     {
+      "id": "ics",
+      "en": "Industrial and OT",
+      "ar": "الأنظمة الصناعية والتشغيل",
+      "enD": "Control systems, industrial protocols and the plant floor.",
+      "arD": "أنظمة التحكم والبروتوكولات الصناعية وأرضية المصنع."
+    },
+    {
+      "id": "mobile",
+      "en": "Mobile",
+      "ar": "الأجهزة المحمولة",
+      "enD": "Android and iOS applications, from decompiling to runtime instrumentation.",
+      "arD": "تطبيقات أندرويد وآي أو إس، من فك الترجمة إلى التعديل وقت التشغيل."
+    },
+    {
+      "id": "hardware",
+      "en": "Hardware and radio",
+      "ar": "العتاد والراديو",
+      "enD": "Firmware, radio frequency and physical interfaces.",
+      "arD": "البرامج الثابتة والترددات الراديوية والواجهات المادية."
+    },
+    {
       "id": "research",
       "en": "Malware and research",
       "ar": "البرمجيات الخبيثة والبحث",
@@ -165,30 +186,115 @@
     "malware": {
       "en": "Malware analysis",
       "ar": "تحليل البرمجيات الخبيثة"
+    },
+    "ics": {
+      "en": "Industrial protocols and targets",
+      "ar": "البروتوكولات والأهداف الصناعية"
+    },
+    "mobile": {
+      "en": "Mobile analysis",
+      "ar": "تحليل التطبيقات المحمولة"
+    },
+    "firmware": {
+      "en": "Firmware and hardware",
+      "ar": "البرامج الثابتة والعتاد"
+    },
+    "radio": {
+      "en": "Radio and signals",
+      "ar": "الراديو والإشارات"
+    },
+    "privesc": {
+      "en": "Privilege escalation",
+      "ar": "تصعيد الصلاحيات"
+    },
+    "c2": {
+      "en": "Command and control",
+      "ar": "القيادة والسيطرة"
+    },
+    "packets": {
+      "en": "Packet crafting",
+      "ar": "صياغة الحزم"
     }
   },
+  "paths": [
+    {
+      "en": "See a vulnerability work",
+      "ar": "شاهد ثغرة تعمل",
+      "enD": "Before any theory, break something on purpose in a place built for it.",
+      "arD": "قبل أي نظرية، اكسر شيئا عن قصد في مكان بُني لذلك.",
+      "steps": [
+        "digininja/DVWA",
+        "juice-shop/juice-shop"
+      ]
+    },
+    {
+      "en": "Read the traffic",
+      "ar": "اقرأ حركة الشبكة",
+      "enD": "Most of security is noticing what is on the wire. Capture your own traffic first.",
+      "arD": "أكثر الأمن انتباه إلى ما يجري على السلك، فالتقط حركتك أنت أولا.",
+      "steps": [
+        "wireshark/wireshark",
+        "nmap/nmap"
+      ]
+    },
+    {
+      "en": "Learn what to look for",
+      "ar": "تعلّم ما الذي تبحث عنه",
+      "enD": "Now the references make sense, because you have seen the thing they describe.",
+      "arD": "الآن تصير المراجع مفهومة لأنك رأيت ما تصفه.",
+      "steps": [
+        "OWASP/wstg",
+        "OWASP/CheatSheetSeries",
+        "swisskyrepo/PayloadsAllTheThings"
+      ]
+    },
+    {
+      "en": "Build a lab you can break",
+      "ar": "ابنِ مختبرا تكسره",
+      "enD": "A target you control, so you can be wrong repeatedly and cheaply.",
+      "arD": "هدف تملكه كي تخطئ مرارا وبلا كلفة.",
+      "steps": [
+        "vulhub/vulhub",
+        "rapid7/metasploitable3"
+      ]
+    },
+    {
+      "en": "Pick a direction",
+      "ar": "اختر اتجاها",
+      "enD": "Try one tool from a path that interests you. The choice is reversible.",
+      "arD": "جرّب أداة واحدة من مسار يثير اهتمامك، والاختيار قابل للعدول عنه.",
+      "steps": [
+        "zaproxy/zaproxy",
+        "SigmaHQ/sigma",
+        "Fortiphyd/GRFICSv3"
+      ]
+    }
+  ],
   "stats": {
-    "tools": 94,
+    "tools": 114,
     "unresolved": 0,
-    "stars": 1532907,
+    "stars": 1802396,
     "upkeep": {
-      "active": 86,
-      "slow": 4,
+      "active": 105,
+      "slow": 5,
       "dormant": 2,
       "archived": 2
     },
     "per_role": {
-      "start": 12,
-      "ctf": 18,
-      "red": 30,
-      "blue": 26,
-      "appsec": 21,
+      "start": 17,
+      "ctf": 20,
+      "red": 38,
+      "blue": 28,
+      "appsec": 23,
       "cloud": 11,
       "grc": 12,
       "intel": 8,
-      "research": 13
+      "ics": 6,
+      "mobile": 6,
+      "hardware": 4,
+      "research": 16
     },
-    "languages": 18
+    "languages": 20
   },
   "tools": [
     {
@@ -202,7 +308,7 @@
       "note": "A wide index of tools and one-liners. Useful for finding out what exists.",
       "description": "A collection of inspiring lists, manuals, cheatsheets, blogs, hacks, one-liners, cli/web tools and more.",
       "language": "",
-      "stars": 242426,
+      "stars": 242429,
       "licence": "MIT",
       "archived": false,
       "pushed": "2024-11-19",
@@ -361,6 +467,33 @@
       "supersede": ""
     },
     {
+      "repo": "skylot/jadx",
+      "name": "jadx",
+      "owner": "skylot",
+      "category": "mobile",
+      "roles": [
+        "mobile",
+        "ctf"
+      ],
+      "note": "Decompiles an Android package back to readable Java. Often the whole job.",
+      "description": "Dex to Java decompiler",
+      "language": "Java",
+      "stars": 50364,
+      "licence": "Apache-2.0",
+      "archived": false,
+      "pushed": "2026-09-02",
+      "upkeep": "active",
+      "url": "https://github.com/skylot/jadx",
+      "homepage": "",
+      "topics": [
+        "android",
+        "decompiler",
+        "dex",
+        "java"
+      ],
+      "supersede": ""
+    },
+    {
       "repo": "rapid7/metasploit-framework",
       "name": "metasploit-framework",
       "owner": "rapid7",
@@ -461,6 +594,36 @@
       "supersede": ""
     },
     {
+      "repo": "OWASP/CheatSheetSeries",
+      "name": "CheatSheetSeries",
+      "owner": "OWASP",
+      "category": "reference",
+      "roles": [
+        "start",
+        "appsec"
+      ],
+      "note": "Short, specific guidance per topic. The answer to how should I actually do this.",
+      "description": "The OWASP Cheat Sheet Series was created to provide a concise collection of high value information on specific application security topics.",
+      "language": "Python",
+      "stars": 33104,
+      "licence": "CC-BY-SA-4.0",
+      "archived": false,
+      "pushed": "2026-09-05",
+      "upkeep": "active",
+      "url": "https://github.com/OWASP/CheatSheetSeries",
+      "homepage": "https://cheatsheetseries.owasp.org",
+      "topics": [
+        "application-security",
+        "appsec",
+        "best-practices",
+        "cheatsheets",
+        "code",
+        "owasp",
+        "security"
+      ],
+      "supersede": ""
+    },
+    {
       "repo": "projectdiscovery/nuclei",
       "name": "nuclei",
       "owner": "projectdiscovery",
@@ -472,7 +635,7 @@
       "note": "Template driven vulnerability scanning. The template library is the real product.",
       "description": "Nuclei is a fast, customizable vulnerability scanner powered by the global security community and built on a simple YAML-based DSL, enabling collaboration to tackle trending vulnerabilities on the internet. It helps you find vulnerabilities in your applications, APIs, networks, DNS, and cloud configurations.",
       "language": "Go",
-      "stars": 31050,
+      "stars": 31051,
       "licence": "MIT",
       "archived": false,
       "pushed": "2026-09-07",
@@ -506,7 +669,7 @@
       "note": "Finds secrets in git history, not just the working tree.",
       "description": "Find secrets with Gitleaks 🔑",
       "language": "Go",
-      "stars": 29138,
+      "stars": 29139,
       "licence": "MIT",
       "archived": false,
       "pushed": "2026-08-26",
@@ -584,10 +747,10 @@
       "note": "GPU password recovery. Fast, and the rule engine repays study.",
       "description": "World's fastest and most advanced password recovery utility",
       "language": "C",
-      "stars": 26715,
+      "stars": 26716,
       "licence": "",
       "archived": false,
-      "pushed": "2026-09-06",
+      "pushed": "2026-09-07",
       "upkeep": "active",
       "url": "https://github.com/hashcat/hashcat",
       "homepage": "https://hashcat.net/hashcat/",
@@ -600,6 +763,34 @@
         "hashes",
         "opencl",
         "password"
+      ],
+      "supersede": ""
+    },
+    {
+      "repo": "iBotPeaches/Apktool",
+      "name": "Apktool",
+      "owner": "iBotPeaches",
+      "category": "mobile",
+      "roles": [
+        "mobile"
+      ],
+      "note": "Unpacks and repacks Android applications, so you can change resources and rebuild.",
+      "description": "A tool for reverse engineering Android apk files",
+      "language": "Java",
+      "stars": 25488,
+      "licence": "Apache-2.0",
+      "archived": false,
+      "pushed": "2026-09-04",
+      "upkeep": "active",
+      "url": "https://github.com/iBotPeaches/Apktool",
+      "homepage": "https://apktool.org",
+      "topics": [
+        "9patch",
+        "android",
+        "apk",
+        "apktool",
+        "arsc",
+        "reverse-engineering"
       ],
       "supersede": ""
     },
@@ -633,6 +824,33 @@
         "radare2",
         "reverse-engineering",
         "security"
+      ],
+      "supersede": ""
+    },
+    {
+      "repo": "frida/frida",
+      "name": "frida",
+      "owner": "frida",
+      "category": "mobile",
+      "roles": [
+        "mobile",
+        "research",
+        "red"
+      ],
+      "note": "Injects into a running process so you can watch and change what it does. Not only mobile, but that is where it shines.",
+      "description": "Main repo for hosting release binaries",
+      "language": "Meson",
+      "stars": 21862,
+      "licence": "NOASSERTION",
+      "archived": false,
+      "pushed": "2026-09-06",
+      "upkeep": "active",
+      "url": "https://github.com/frida/frida",
+      "homepage": "https://frida.re",
+      "topics": [
+        "frida",
+        "instrumentation",
+        "vala"
       ],
       "supersede": ""
     },
@@ -679,6 +897,48 @@
       "supersede": ""
     },
     {
+      "repo": "MobSF/Mobile-Security-Framework-MobSF",
+      "name": "Mobile-Security-Framework-MobSF",
+      "owner": "MobSF",
+      "category": "mobile",
+      "roles": [
+        "mobile",
+        "appsec"
+      ],
+      "note": "Static and dynamic analysis for Android and iOS in one place. The usual first stop.",
+      "description": "Mobile Security Framework (MobSF) is an automated, all-in-one mobile application (Android/iOS/Windows) pen-testing, malware analysis and security assessment framework capable of performing static and dynamic analysis.",
+      "language": "JavaScript",
+      "stars": 21714,
+      "licence": "GPL-3.0",
+      "archived": false,
+      "pushed": "2026-09-02",
+      "upkeep": "active",
+      "url": "https://github.com/MobSF/Mobile-Security-Framework-MobSF",
+      "homepage": "https://opensecurity.in",
+      "topics": [
+        "android-security",
+        "api-testing",
+        "apk",
+        "cwe",
+        "devsecops",
+        "dynamic-analysis",
+        "ios-security",
+        "malware-analysis",
+        "mastg",
+        "masvs",
+        "mobile-security",
+        "mobsf",
+        "mstg",
+        "owasp",
+        "rest",
+        "runtime-security",
+        "static-analysis",
+        "web-security",
+        "windows-mobile-security"
+      ],
+      "supersede": ""
+    },
+    {
       "repo": "vulhub/vulhub",
       "name": "vulhub",
       "owner": "vulhub",
@@ -703,6 +963,47 @@
         "dockerfile",
         "vulhub",
         "vulnerability-environment"
+      ],
+      "supersede": ""
+    },
+    {
+      "repo": "peass-ng/PEASS-ng",
+      "name": "PEASS-ng",
+      "owner": "peass-ng",
+      "category": "privesc",
+      "roles": [
+        "red"
+      ],
+      "note": "Enumerates every local privilege escalation path on Linux and Windows and ranks what it finds.",
+      "description": "PEASS - Privilege Escalation Awesome Scripts SUITE (with colors)",
+      "language": "C#",
+      "stars": 20473,
+      "licence": "NOASSERTION",
+      "archived": false,
+      "pushed": "2026-09-05",
+      "upkeep": "active",
+      "url": "https://github.com/peass-ng/PEASS-ng",
+      "homepage": "https://book.hacktricks.xyz",
+      "topics": [
+        "bash",
+        "batch",
+        "batch-script",
+        "color",
+        "csharp",
+        "enumeration",
+        "exe",
+        "linpe",
+        "linpeas",
+        "linux",
+        "one-liner",
+        "oneliner",
+        "peas",
+        "privesc",
+        "script",
+        "shell",
+        "unix",
+        "windows",
+        "winpeas"
       ],
       "supersede": ""
     },
@@ -781,7 +1082,7 @@
       "stars": 16791,
       "licence": "NOASSERTION",
       "archived": false,
-      "pushed": "2026-09-05",
+      "pushed": "2026-09-07",
       "upkeep": "active",
       "url": "https://github.com/wazuh/wazuh",
       "homepage": "https://wazuh.com/",
@@ -1160,6 +1461,28 @@
       "supersede": ""
     },
     {
+      "repo": "ReFirmLabs/binwalk",
+      "name": "binwalk",
+      "owner": "ReFirmLabs",
+      "category": "firmware",
+      "roles": [
+        "hardware",
+        "research"
+      ],
+      "note": "Finds and extracts filesystems and executables inside a firmware image.",
+      "description": "Firmware Analysis Tool",
+      "language": "Rust",
+      "stars": 14319,
+      "licence": "MIT",
+      "archived": false,
+      "pushed": "2026-08-11",
+      "upkeep": "active",
+      "url": "https://github.com/ReFirmLabs/binwalk",
+      "homepage": "",
+      "topics": [],
+      "supersede": ""
+    },
+    {
       "repo": "OJ/gobuster",
       "name": "gobuster",
       "owner": "OJ",
@@ -1275,7 +1598,7 @@
       "note": "Damn Vulnerable Web Application. Small, old, and still the clearest way to see a SQL injection work.",
       "description": "Damn Vulnerable Web Application (DVWA)",
       "language": "PHP",
-      "stars": 13617,
+      "stars": 13619,
       "licence": "GPL-3.0",
       "archived": false,
       "pushed": "2026-08-19",
@@ -1373,6 +1696,48 @@
       "supersede": ""
     },
     {
+      "repo": "OWASP/mastg",
+      "name": "mastg",
+      "owner": "OWASP",
+      "category": "reference",
+      "roles": [
+        "mobile",
+        "start"
+      ],
+      "note": "The Mobile Application Security Testing Guide. What to test on a phone and why.",
+      "description": "The OWASP Mobile Application Security Testing Guide (MASTG) is a comprehensive manual for mobile app security testing and reverse engineering. It describes technical processes for verifying the OWASP Mobile Security Weakness Enumeration (MASWE) weaknesses, which are in alignment with the OWASP MASVS.",
+      "language": "Python",
+      "stars": 13156,
+      "licence": "CC-BY-SA-4.0",
+      "archived": false,
+      "pushed": "2026-09-04",
+      "upkeep": "active",
+      "url": "https://github.com/OWASP/mastg",
+      "homepage": "http://mas.owasp.org/",
+      "topics": [
+        "android",
+        "android-application",
+        "compliancy-checklist",
+        "dynamic-analysis",
+        "hacking",
+        "ios",
+        "ios-app",
+        "mast",
+        "mastg",
+        "mobile-app",
+        "mobile-security",
+        "mstg",
+        "network-analysis",
+        "pentesting",
+        "reverse-engineering",
+        "reverse-enginnering",
+        "runtime-analysis",
+        "static-analysis",
+        "testing-cryptography"
+      ],
+      "supersede": ""
+    },
+    {
       "repo": "anchore/grype",
       "name": "grype",
       "owner": "anchore",
@@ -1440,6 +1805,46 @@
       "supersede": ""
     },
     {
+      "repo": "secdev/scapy",
+      "name": "scapy",
+      "owner": "secdev",
+      "category": "packets",
+      "roles": [
+        "red",
+        "blue",
+        "ctf",
+        "ics"
+      ],
+      "note": "Craft, send and dissect packets from Python. When no tool exists for a protocol, this is how you make one.",
+      "description": "Scapy: the Python-based interactive packet manipulation program & library.",
+      "language": "Python",
+      "stars": 12523,
+      "licence": "GPL-2.0",
+      "archived": false,
+      "pushed": "2026-09-06",
+      "upkeep": "active",
+      "url": "https://github.com/secdev/scapy",
+      "homepage": "https://scapy.net",
+      "topics": [
+        "hacktoberfest",
+        "network",
+        "network-analysis",
+        "network-discovery",
+        "network-security",
+        "network-visualization",
+        "packet-analyser",
+        "packet-capture",
+        "packet-crafting",
+        "packet-sniffer",
+        "pcap",
+        "python",
+        "scapy",
+        "security",
+        "security-tools"
+      ],
+      "supersede": ""
+    },
+    {
       "repo": "redcanaryco/atomic-red-team",
       "name": "atomic-red-team",
       "owner": "redcanaryco",
@@ -1492,6 +1897,43 @@
         "opa",
         "open-policy-agent",
         "policy"
+      ],
+      "supersede": ""
+    },
+    {
+      "repo": "BishopFox/sliver",
+      "name": "sliver",
+      "owner": "BishopFox",
+      "category": "c2",
+      "roles": [
+        "red"
+      ],
+      "note": "A modern open command and control framework, useful for understanding implant design.",
+      "description": "Adversary Emulation Framework",
+      "language": "Go",
+      "stars": 11791,
+      "licence": "GPL-3.0",
+      "archived": false,
+      "pushed": "2026-09-07",
+      "upkeep": "active",
+      "url": "https://github.com/BishopFox/sliver",
+      "homepage": "",
+      "topics": [
+        "adversarial-attacks",
+        "adversary-simulation",
+        "c2",
+        "command-and-control",
+        "dns",
+        "dns-server",
+        "golang",
+        "gplv3",
+        "http",
+        "implant",
+        "red-team",
+        "red-team-engagement",
+        "red-teaming",
+        "security-tools",
+        "sliver"
       ],
       "supersede": ""
     },
@@ -1549,7 +1991,7 @@
       "note": "A vendor neutral format for detection rules, plus a large rule library. Write once, convert.",
       "description": "Main Sigma Rule Repository",
       "language": "Python",
-      "stars": 10991,
+      "stars": 10992,
       "licence": "NOASSERTION",
       "archived": false,
       "pushed": "2026-09-03",
@@ -1790,6 +2232,37 @@
       "supersede": ""
     },
     {
+      "repo": "sensepost/objection",
+      "name": "objection",
+      "owner": "sensepost",
+      "category": "mobile",
+      "roles": [
+        "mobile",
+        "red"
+      ],
+      "note": "Runtime mobile exploration built on frida, with the common bypasses already written.",
+      "description": "📱 objection - runtime mobile exploration",
+      "language": "Python",
+      "stars": 9369,
+      "licence": "GPL-3.0",
+      "archived": false,
+      "pushed": "2026-07-23",
+      "upkeep": "active",
+      "url": "https://github.com/sensepost/objection",
+      "homepage": "",
+      "topics": [
+        "android",
+        "framework",
+        "frida",
+        "instrumentation",
+        "ios",
+        "mobile",
+        "pentest",
+        "security"
+      ],
+      "supersede": ""
+    },
+    {
       "repo": "falcosecurity/falco",
       "name": "falco",
       "owner": "falcosecurity",
@@ -2007,6 +2480,74 @@
         "kubernetes",
         "kubernetes-security",
         "openshift"
+      ],
+      "supersede": ""
+    },
+    {
+      "repo": "greatscottgadgets/hackrf",
+      "name": "hackrf",
+      "owner": "greatscottgadgets",
+      "category": "radio",
+      "roles": [
+        "hardware"
+      ],
+      "note": "Host software for a widely used software defined radio. Where radio work usually begins.",
+      "description": "low cost software radio platform",
+      "language": "C",
+      "stars": 8086,
+      "licence": "GPL-2.0",
+      "archived": false,
+      "pushed": "2026-09-03",
+      "upkeep": "active",
+      "url": "https://github.com/greatscottgadgets/hackrf",
+      "homepage": "https://greatscottgadgets.com/hackrf/",
+      "topics": [
+        "hackrf",
+        "hardware",
+        "radio",
+        "rf",
+        "sdr"
+      ],
+      "supersede": ""
+    },
+    {
+      "repo": "six2dez/reconftw",
+      "name": "reconftw",
+      "owner": "six2dez",
+      "category": "recon",
+      "roles": [
+        "red"
+      ],
+      "note": "Chains the recon tools into one pipeline, which is also a good way to learn the order they go in.",
+      "description": "reconFTW is a tool designed to perform automated recon on a target domain by running the best set of tools to perform scanning and finding out vulnerabilities",
+      "language": "Shell",
+      "stars": 8071,
+      "licence": "MIT",
+      "archived": false,
+      "pushed": "2026-09-05",
+      "upkeep": "active",
+      "url": "https://github.com/six2dez/reconftw",
+      "homepage": "https://docs.reconftw.com/",
+      "topics": [
+        "bug-bounty",
+        "bugbounty",
+        "bugbounty-tool",
+        "dns",
+        "hacking",
+        "nuclei",
+        "osint",
+        "penetration-testing",
+        "pentest",
+        "pentest-tool",
+        "pentesting",
+        "recon",
+        "reconnaissance",
+        "scanner",
+        "security",
+        "security-tools",
+        "subdomain",
+        "subdomain-enumeration",
+        "vulnerabilities"
       ],
       "supersede": ""
     },
@@ -2296,6 +2837,39 @@
       "supersede": ""
     },
     {
+      "repo": "gnuradio/gnuradio",
+      "name": "gnuradio",
+      "owner": "gnuradio",
+      "category": "radio",
+      "roles": [
+        "hardware",
+        "research"
+      ],
+      "note": "A signal processing framework for building radio systems in blocks rather than code.",
+      "description": "GNU Radio - the Free and Open Software Radio Ecosystem",
+      "language": "C++",
+      "stars": 6248,
+      "licence": "GPL-3.0",
+      "archived": false,
+      "pushed": "2026-08-27",
+      "upkeep": "active",
+      "url": "https://github.com/gnuradio/gnuradio",
+      "homepage": "https://gnuradio.org",
+      "topics": [
+        "c-plus-plus",
+        "cybersecurity",
+        "dsp",
+        "flowgraph",
+        "gnu",
+        "gnuradio",
+        "python",
+        "radio",
+        "sdr",
+        "wireless"
+      ],
+      "supersede": ""
+    },
+    {
       "repo": "projectdiscovery/naabu",
       "name": "naabu",
       "owner": "projectdiscovery",
@@ -2348,6 +2922,49 @@
         "malware-analysis",
         "reverse-engineering",
         "threat-intelligence"
+      ],
+      "supersede": ""
+    },
+    {
+      "repo": "RfidResearchGroup/proxmark3",
+      "name": "proxmark3",
+      "owner": "RfidResearchGroup",
+      "category": "firmware",
+      "roles": [
+        "hardware",
+        "red"
+      ],
+      "note": "The reference toolkit for reading, analysing and testing contactless cards.",
+      "description": "Iceman Fork - Proxmark3",
+      "language": "C",
+      "stars": 6029,
+      "licence": "GPL-3.0",
+      "archived": false,
+      "pushed": "2026-09-07",
+      "upkeep": "active",
+      "url": "https://github.com/RfidResearchGroup/proxmark3",
+      "homepage": "http://www.icedev.se",
+      "topics": [
+        "125khz",
+        "clone",
+        "contactless",
+        "darkside",
+        "hitag2",
+        "iceman",
+        "iclass",
+        "iso14443a",
+        "iso14443b",
+        "iso15693",
+        "mifare",
+        "nfc",
+        "pm3",
+        "proxmark",
+        "proxmark3",
+        "rdv40",
+        "rfid",
+        "rrg",
+        "simulate",
+        "sniffer"
       ],
       "supersede": ""
     },
@@ -2944,6 +3561,38 @@
       "supersede": ""
     },
     {
+      "repo": "pymodbus-dev/pymodbus",
+      "name": "pymodbus",
+      "owner": "pymodbus-dev",
+      "category": "ics",
+      "roles": [
+        "ics",
+        "red"
+      ],
+      "note": "A Modbus implementation in Python. How you talk to industrial equipment when testing your own.",
+      "description": "A full modbus protocol written in python",
+      "language": "Python",
+      "stars": 2764,
+      "licence": "NOASSERTION",
+      "archived": false,
+      "pushed": "2026-09-02",
+      "upkeep": "active",
+      "url": "https://github.com/pymodbus-dev/pymodbus",
+      "homepage": "",
+      "topics": [
+        "modbus",
+        "modbus-library",
+        "modbus-master",
+        "modbus-protocol",
+        "modbus-rtu",
+        "modbus-serial",
+        "modbus-slave",
+        "modbus-tcp",
+        "python"
+      ],
+      "supersede": ""
+    },
+    {
       "repo": "elastic/detection-rules",
       "name": "detection-rules",
       "owner": "elastic",
@@ -3101,6 +3750,42 @@
       "supersede": ""
     },
     {
+      "repo": "ITI/ICS-Security-Tools",
+      "name": "ICS-Security-Tools",
+      "owner": "ITI",
+      "category": "reference",
+      "roles": [
+        "ics",
+        "start"
+      ],
+      "note": "Protocol references, sample captures and tooling collected for control system work.",
+      "description": "Tools, tips, tricks, and more for exploring ICS Security.",
+      "language": "HTML",
+      "stars": 2033,
+      "licence": "CC-BY-4.0",
+      "archived": false,
+      "pushed": "2025-04-15",
+      "upkeep": "slow",
+      "url": "https://github.com/ITI/ICS-Security-Tools",
+      "homepage": "",
+      "topics": [
+        "awesome",
+        "awesome-list",
+        "dcs",
+        "grid",
+        "hacking",
+        "ics",
+        "ics-security",
+        "pcap-files",
+        "power",
+        "protocols",
+        "scada",
+        "security",
+        "tools"
+      ],
+      "supersede": ""
+    },
+    {
       "repo": "OpenSCAP/openscap",
       "name": "openscap",
       "owner": "OpenSCAP",
@@ -3127,6 +3812,35 @@
         "scanning",
         "scap",
         "xccdf"
+      ],
+      "supersede": ""
+    },
+    {
+      "repo": "mushorg/conpot",
+      "name": "conpot",
+      "owner": "mushorg",
+      "category": "ics",
+      "roles": [
+        "ics",
+        "blue"
+      ],
+      "note": "An ICS honeypot that speaks industrial protocols. The safest way to see what scans your plant.",
+      "description": "ICS/SCADA honeypot",
+      "language": "Python",
+      "stars": 1518,
+      "licence": "GPL-2.0",
+      "archived": false,
+      "pushed": "2026-09-06",
+      "upkeep": "active",
+      "url": "https://github.com/mushorg/conpot",
+      "homepage": "",
+      "topics": [
+        "hacktoberfest",
+        "honeypot",
+        "ics",
+        "python",
+        "scada",
+        "security"
       ],
       "supersede": ""
     },
@@ -3160,6 +3874,61 @@
         "security",
         "xml",
         "yaml"
+      ],
+      "supersede": ""
+    },
+    {
+      "repo": "Autonomy-Logic/openplc-runtime",
+      "name": "openplc-runtime",
+      "owner": "Autonomy-Logic",
+      "category": "ics",
+      "roles": [
+        "ics",
+        "start"
+      ],
+      "note": "A real programmable logic controller you can run on a spare machine. Build a lab without buying hardware.",
+      "description": "OpenPLC Runtime v4 designed to run programs built on OpenPLC Editor v4",
+      "language": "Python",
+      "stars": 339,
+      "licence": "MIT",
+      "archived": false,
+      "pushed": "2026-09-04",
+      "upkeep": "active",
+      "url": "https://github.com/Autonomy-Logic/openplc-runtime",
+      "homepage": "",
+      "topics": [],
+      "supersede": ""
+    },
+    {
+      "repo": "Fortiphyd/GRFICSv3",
+      "name": "GRFICSv3",
+      "owner": "Fortiphyd",
+      "category": "ics",
+      "roles": [
+        "ics",
+        "start"
+      ],
+      "note": "A simulated chemical plant with a real control network, so you can attack process control safely.",
+      "description": "GRFICSv3 is a FREE and open source OT security lab with realistic networking and a 3D process simulation for training and learning ICS security",
+      "language": "C++",
+      "stars": 229,
+      "licence": "GPL-3.0",
+      "archived": false,
+      "pushed": "2026-07-24",
+      "upkeep": "active",
+      "url": "https://github.com/Fortiphyd/GRFICSv3",
+      "homepage": "",
+      "topics": [
+        "caldera",
+        "cybersecurity-education",
+        "cybersecurity-training",
+        "ics-security",
+        "ics-security-testbed",
+        "openplc",
+        "ot-security",
+        "plc",
+        "scada-lts",
+        "scada-security"
       ],
       "supersede": ""
     },

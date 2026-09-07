@@ -25,7 +25,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "data"))
-from seed import CATEGORIES, ROLES, TOOLS  # noqa: E402
+from seed import CATEGORIES, PATHS, ROLES, TOOLS  # noqa: E402
 
 OUT = ROOT / "data" / "catalog.json"
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
@@ -35,6 +35,15 @@ TOKEN = os.environ.get("GITHUB_TOKEN", "")
 # monthly commits, and calling it abandoned would be wrong.
 ACTIVE_DAYS = 180
 SLOW_DAYS = 730
+
+
+DASHES = {0x2012: "-", 0x2013: "-", 0x2014: "-", 0x2015: "-"}
+
+
+def clean(text):
+    """Upstream descriptions carry Unicode dashes. Normalise at ingest so they
+    cannot reach the published page."""
+    return (text or "").translate(DASHES).strip()
 
 
 def api(path):
@@ -85,7 +94,7 @@ def main():
             "category": cat,
             "roles": roles,
             "note": note,
-            "description": (data["description"] or "").strip(),
+            "description": clean(data["description"]),
             "language": data["language"] or "",
             "stars": data["stargazers_count"],
             "licence": ((data.get("license") or {}).get("spdx_id") or "")
@@ -117,10 +126,32 @@ def main():
         counts[e["upkeep"]] = counts.get(e["upkeep"], 0) + 1
     per_role = {r[0]: sum(1 for e in entries if r[0] in e["roles"]) for r in ROLES}
 
+    # The starting path is advice, so it must not send a beginner at something
+    # that has stopped. An unresolved or archived step fails the build.
+    have = {e["repo"]: e for e in entries}
+    lower = {k.lower(): v for k, v in have.items()}
+    path_faults, paths = [], []
+    for en, ar, enD, arD, steps in PATHS:
+        resolved = []
+        for step in steps:
+            hit = lower.get(step.lower())
+            if hit is None:
+                path_faults.append(f"path step {step} is not in the catalogue")
+                continue
+            if hit["upkeep"] in ("archived", "dormant"):
+                path_faults.append(
+                    f"path step {hit['repo']} is {hit['upkeep']}, the starting path must not recommend it")
+            resolved.append(hit["repo"])
+        paths.append({"en": en, "ar": ar, "enD": enD, "arD": arD, "steps": resolved})
+    if path_faults:
+        print("\nStarting path check failed:", *path_faults, sep="\n  ", file=sys.stderr)
+        sys.exit(1)
+
     catalog = {
         "generated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "roles": [{"id": r[0], "en": r[1], "ar": r[2], "enD": r[3], "arD": r[4]} for r in ROLES],
         "categories": {k: {"en": v[0], "ar": v[1]} for k, v in CATEGORIES.items()},
+        "paths": paths,
         "stats": {
             "tools": len(entries),
             "unresolved": len(failed),
@@ -133,7 +164,12 @@ def main():
     }
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(catalog, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    payload = json.dumps(catalog, indent=2, ensure_ascii=False) + "\n"
+    stray = [c for c in payload if 0x2012 <= ord(c) <= 0x2015]
+    if stray:
+        print(f"\n{len(stray)} Unicode dashes survived normalisation", file=sys.stderr)
+        sys.exit(1)
+    OUT.write_text(payload, encoding="utf-8")
 
     print(f"\ncatalogue: {len(entries)} tools, {len(failed)} unresolved")
     print(f"  upkeep {counts}")

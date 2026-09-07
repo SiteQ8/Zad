@@ -9,10 +9,14 @@ Provisions for the road, for anyone starting in cybersecurity.
 
 ## What this is
 
-A curated catalogue of 94 open source security tools, organised by what you are
-trying to do rather than by alphabet. Nine paths: starting out, capture the
+A curated catalogue of 114 open source security tools, organised by what you are
+trying to do rather than by alphabet. Twelve paths: starting out, capture the
 flag, offensive, defensive, application security, cloud, governance,
-intelligence, and research.
+intelligence, industrial and OT, mobile, hardware and radio, and research.
+
+Starting out is an ordered route rather than a grid, because the hardest part of
+beginning is not knowing what to do second. Every step in it is checked on each
+build and the build fails if a step points at a project that has stopped.
 
 ## Why another list
 
@@ -34,12 +38,16 @@ than from an impression:
 
 **An entry that cannot be resolved is not published.** A renamed repository is
 followed and the new name recorded, so the catalogue corrects itself instead of
-rotting. Building this catalogue found one entry pointing at the wrong owner and
-one project that had moved, both of which would have sat in a hand written list
+rotting. Building this catalogue found one entry pointing at the wrong owner, three
+projects that had moved to new names, and one recommended in the starting path
+that had been archived. All five would have sat in a hand written list
 indefinitely.
 
 Where a project has stopped and a live replacement exists, the card says so and
 names it. Two entries carry that pointer today.
+
+Headline figures on the page are computed from the catalogue rather than typed,
+because the first version of them was already stale by twenty tools.
 
 ## Both languages, completely
 
@@ -83,9 +91,13 @@ MIT. Each catalogued tool carries its own licence, shown on its card.
 
 ## ما هذا
 
-كتالوج منتقى لأربع وتسعين أداة أمنية مفتوحة المصدر، مرتبة حسب ما تريد أن تفعله لا
-حسب الحروف، وفيه تسعة مسارات هي البداية ومسابقات التقاط العلم والأمن الهجومي
-والأمن الدفاعي وأمن التطبيقات والسحابة والحوكمة والاستخبارات والبحث.
+كتالوج منتقى لمئة وأربع عشرة أداة أمنية مفتوحة المصدر، مرتبة حسب ما تريد أن تفعله
+لا حسب الحروف، وفيه اثنا عشر مسارا هي البداية ومسابقات التقاط العلم والأمن الهجومي
+والأمن الدفاعي وأمن التطبيقات والسحابة والحوكمة والاستخبارات والأنظمة الصناعية
+والأجهزة المحمولة والعتاد والراديو والبحث.
+
+ومسار البداية طريق مرتب لا شبكة بطاقات، لأن أصعب ما في البداية ألا تعرف الخطوة
+الثانية، وتُفحص كل خطوة فيه في كل بناء ويسقط البناء إن أشارت خطوة إلى مشروع توقف.
 
 ## لماذا قائمة أخرى
 

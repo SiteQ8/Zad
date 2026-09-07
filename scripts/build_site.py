@@ -35,15 +35,13 @@ html = tpl.replace("/*__CATALOG__*/null",
 if "__CATALOG__" in html:
     print("payload placeholder not replaced", file=sys.stderr); sys.exit(1)
 
-# The headline figures are written by hand in the template, so they can drift
-# from the data. Check them rather than trust them.
+# Headline figures are derived from the data at runtime, so they cannot drift.
+# What can drift is a hand written figure sneaking back into the template, so
+# assert that the readout is still computed rather than typed.
 s = cat["stats"]
-for want, label in ((str(s["tools"]), "tools"),
-                    (str(len(cat["roles"])), "roles"),
-                    (str(s["languages"]), "languages")):
-    if want not in tpl:
-        print(f"headline figure for {label} ({want}) is not in the template", file=sys.stderr)
-        sys.exit(1)
+if "D.stats.tools" not in tpl:
+    print("readout figures are no longer derived from the data", file=sys.stderr)
+    sys.exit(1)
 
 out = ROOT / "index.html"
 out.write_text(html, encoding="utf-8")
