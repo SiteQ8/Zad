@@ -26,6 +26,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "data"))
 from seed import CATEGORIES, PATHS, ROLES, TOOLS  # noqa: E402
+from web import KINDS, WEB  # noqa: E402
+sys.path.insert(0, str(ROOT / "scripts"))
+from webcheck import check_all  # noqa: E402
 
 OUT = ROOT / "data" / "catalog.json"
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
@@ -121,10 +124,44 @@ def main():
         for old, new in renamed:
             print(f"  {old} -> {new}")
 
+    # ---- The open web half. Verified by fetching, not by an API, because the
+    # web does not have one. Only dead and unreachable are failures: a site that
+    # refuses a script is not a site that has closed.
+    print(f"\nfetching {len(WEB)} web resources")
+    results = check_all([w[0] for w in WEB], workers=10)
+    sites, site_faults, site_moves = [], [], []
+    for url, kind, roles, note in WEB:
+        r = results[url]
+        if r["state"] in ("dead", "unreachable"):
+            site_faults.append(f"{url}  {r['state']} {r.get('status') or r.get('error','')}")
+            continue
+        if r["state"] == "moved":
+            site_moves.append((url, r["final"]))
+        sites.append({
+            "url": r["final"], "requested": url, "kind": kind, "roles": roles,
+            "note": note, "state": r["state"], "status": r["status"],
+            "host": r["final"].split("/")[2] if "//" in r["final"] else url,
+        })
+
+    if site_faults:
+        print(f"\n{len(site_faults)} web resources failed:", file=sys.stderr)
+        for f in site_faults:
+            print(f"  {f}", file=sys.stderr)
+        if strict:
+            sys.exit(1)
+    if site_moves:
+        print("\nfollowed web redirects:")
+        for old, new in site_moves:
+            print(f"  {old} -> {new}")
+    st = {}
+    for s in sites:
+        st[s["state"]] = st.get(s["state"], 0) + 1
+    print(f"web: {len(sites)} live, {len(site_faults)} failed, states {st}")
+
     counts = {}
     for e in entries:
         counts[e["upkeep"]] = counts.get(e["upkeep"], 0) + 1
-    per_role = {r[0]: sum(1 for e in entries if r[0] in e["roles"]) for r in ROLES}
+
 
     # The starting path is advice, so it must not send a beginner at something
     # that has stopped. An unresolved or archived step fails the build.
@@ -151,16 +188,21 @@ def main():
         "generated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "roles": [{"id": r[0], "en": r[1], "ar": r[2], "enD": r[3], "arD": r[4]} for r in ROLES],
         "categories": {k: {"en": v[0], "ar": v[1]} for k, v in CATEGORIES.items()},
+        "kinds": {k: {"en": v[0], "ar": v[1]} for k, v in KINDS.items()},
         "paths": paths,
         "stats": {
             "tools": len(entries),
+            "sites": len(sites),
+            "site_states": st,
             "unresolved": len(failed),
             "stars": sum(e["stars"] for e in entries),
             "upkeep": counts,
-            "per_role": per_role,
+            "per_role": {r[0]: (sum(1 for e in entries if r[0] in e["roles"]) +
+                            sum(1 for s in sites if r[0] in s["roles"])) for r in ROLES},
             "languages": len({e["language"] for e in entries if e["language"]}),
         },
         "tools": sorted(entries, key=lambda e: -e["stars"]),
+        "sites": sites,
     }
 
     OUT.parent.mkdir(parents=True, exist_ok=True)

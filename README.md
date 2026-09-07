@@ -9,8 +9,10 @@ Provisions for the road, for anyone starting in cybersecurity.
 
 ## What this is
 
-A curated catalogue of 114 open source security tools, organised by what you are
-trying to do rather than by alphabet. Twelve paths: starting out, capture the
+A curated catalogue of 114 open source repositories and 64 sites and platforms,
+organised by what you are trying to do rather than by alphabet. Half of what a
+beginner needs is not a repository: it is a place to practise, a standard to
+read, a lookup service, or someone explaining what happened last week. Twelve paths: starting out, capture the
 flag, offensive, defensive, application security, cloud, governance,
 intelligence, industrial and OT, mobile, hardware and radio, and research.
 
@@ -24,10 +26,10 @@ Most curated security lists rot. They are written once, and years later they
 still point at repositories that have been archived, renamed by their
 maintainer, or abandoned. You find out by opening ten tabs.
 
-Zad resolves every entry against the GitHub API on each build and records what
-is true right now: stars, licence, language, whether the project is archived,
-and the date of the last push. Maintenance is classified from that date rather
-than from an impression:
+Zad verifies both halves on every build. Repositories are resolved against the
+GitHub API, which records stars, licence, language, archive status and the date
+of the last push, and maintenance is classified from that date rather than from
+an impression:
 
 | Status | Meaning |
 | --- | --- |
@@ -45,6 +47,21 @@ indefinitely.
 
 Where a project has stopped and a live replacement exists, the card says so and
 names it. Two entries carry that pointer today.
+
+Sites and platforms have no API to ask, so they are fetched instead, and the
+result is classified rather than reduced to alive or dead:
+
+| Status | Meaning |
+| --- | --- |
+| reachable | answered normally |
+| redirected | answered from a different host, and the link now points where it landed |
+| blocks automated checks | refused the request, which is a bot filter and not evidence of closure |
+
+Treating a refusal as death would have quietly deleted five of the most used
+services in the catalogue, so a blocked resource is kept and labelled. Only a
+genuine error or no answer at all removes an entry. Verification found two
+resources that had moved host: one documentation wiki, and Project Zero, which
+left blogspot for its own domain while most lists still point at the old one.
 
 Headline figures on the page are computed from the catalogue rather than typed,
 because the first version of them was already stale by twenty tools.
@@ -91,8 +108,9 @@ MIT. Each catalogued tool carries its own licence, shown on its card.
 
 ## ما هذا
 
-كتالوج منتقى لمئة وأربع عشرة أداة أمنية مفتوحة المصدر، مرتبة حسب ما تريد أن تفعله
-لا حسب الحروف، وفيه اثنا عشر مسارا هي البداية ومسابقات التقاط العلم والأمن الهجومي
+كتالوج منتقى لمئة وأربعة عشر مستودعا مفتوح المصدر وأربعة وستين موقعا ومنصة، مرتبة
+حسب ما تريد أن تفعله لا حسب الحروف، فنصف ما يحتاجه المبتدئ ليس مستودعا بل مكانا
+يتدرب فيه أو معيارا يقرؤه أو خدمة بحث أو من يشرح له ما جرى الأسبوع الماضي، وفيه اثنا عشر مسارا هي البداية ومسابقات التقاط العلم والأمن الهجومي
 والأمن الدفاعي وأمن التطبيقات والسحابة والحوكمة والاستخبارات والأنظمة الصناعية
 والأجهزة المحمولة والعتاد والراديو والبحث.
 

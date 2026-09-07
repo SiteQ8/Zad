@@ -216,6 +216,44 @@
       "ar": "صياغة الحزم"
     }
   },
+  "kinds": {
+    "practice": {
+      "en": "Practice platforms",
+      "ar": "منصات التدرب"
+    },
+    "ctf": {
+      "en": "Competition",
+      "ar": "المسابقات"
+    },
+    "docs": {
+      "en": "Reference and documentation",
+      "ar": "المراجع والتوثيق"
+    },
+    "standard": {
+      "en": "Standards and frameworks",
+      "ar": "المعايير والأطر"
+    },
+    "lookup": {
+      "en": "Lookup and intelligence services",
+      "ar": "خدمات البحث والاستخبارات"
+    },
+    "sandbox": {
+      "en": "Online analysis",
+      "ar": "التحليل عبر الإنترنت"
+    },
+    "reading": {
+      "en": "Reading and reporting",
+      "ar": "القراءة والتقارير"
+    },
+    "cert": {
+      "en": "Certification",
+      "ar": "الشهادات"
+    },
+    "regional": {
+      "en": "Kuwait and Gulf authorities",
+      "ar": "الجهات الكويتية والخليجية"
+    }
+  },
   "paths": [
     {
       "en": "See a vulnerability work",
@@ -272,8 +310,14 @@
   ],
   "stats": {
     "tools": 114,
+    "sites": 64,
+    "site_states": {
+      "ok": 57,
+      "moved": 2,
+      "blocked": 5
+    },
     "unresolved": 0,
-    "stars": 1802396,
+    "stars": 1802402,
     "upkeep": {
       "active": 105,
       "slow": 5,
@@ -281,18 +325,18 @@
       "archived": 2
     },
     "per_role": {
-      "start": 17,
-      "ctf": 20,
-      "red": 38,
-      "blue": 28,
-      "appsec": 23,
-      "cloud": 11,
-      "grc": 12,
-      "intel": 8,
-      "ics": 6,
+      "start": 27,
+      "ctf": 32,
+      "red": 53,
+      "blue": 51,
+      "appsec": 30,
+      "cloud": 12,
+      "grc": 32,
+      "intel": 17,
+      "ics": 7,
       "mobile": 6,
       "hardware": 4,
-      "research": 16
+      "research": 24
     },
     "languages": 20
   },
@@ -349,7 +393,7 @@
       "note": "Finds a username across social networks.",
       "description": "Hunt down social media accounts by username across social networks",
       "language": "Python",
-      "stars": 91036,
+      "stars": 91037,
       "licence": "MIT",
       "archived": false,
       "pushed": "2026-09-07",
@@ -866,7 +910,7 @@
       "note": "Automates OSINT collection across a large number of modules.",
       "description": "SpiderFoot automates OSINT for threat intelligence and mapping your attack surface.",
       "language": "Python",
-      "stars": 21771,
+      "stars": 21772,
       "licence": "MIT",
       "archived": false,
       "pushed": "2026-04-13",
@@ -908,7 +952,7 @@
       "note": "Static and dynamic analysis for Android and iOS in one place. The usual first stop.",
       "description": "Mobile Security Framework (MobSF) is an automated, all-in-one mobile application (Android/iOS/Windows) pen-testing, malware analysis and security assessment framework capable of performing static and dynamic analysis.",
       "language": "JavaScript",
-      "stars": 21714,
+      "stars": 21715,
       "licence": "GPL-3.0",
       "archived": false,
       "pushed": "2026-09-02",
@@ -2022,7 +2066,7 @@
       "note": "The other gdb enhancement. Try both and keep whichever you read faster.",
       "description": "Exploit Development and Reverse Engineering with GDB & LLDB Made Easy",
       "language": "Python",
-      "stars": 10835,
+      "stars": 10836,
       "licence": "MIT",
       "archived": false,
       "pushed": "2026-09-06",
@@ -2147,7 +2191,7 @@
       "note": "Packet analysis. The tool you reach for when the answer is in the traffic.",
       "description": "Read-only mirror of Wireshark's Git repository at https://gitlab.com/wireshark/wireshark. You're welcome to submit pull requests there.",
       "language": "C",
-      "stars": 9833,
+      "stars": 9834,
       "licence": "GPL-2.0",
       "archived": false,
       "pushed": "2026-09-06",
@@ -2593,7 +2637,7 @@
       "note": "Multi cloud auditing that produces a readable report rather than raw findings.",
       "description": "Multi-Cloud Security Auditing Tool",
       "language": "Python",
-      "stars": 7809,
+      "stars": 7810,
       "licence": "GPL-2.0",
       "archived": false,
       "pushed": "2025-09-23",
@@ -4003,6 +4047,818 @@
         "zero-dependency"
       ],
       "supersede": ""
+    }
+  ],
+  "sites": [
+    {
+      "url": "https://tryhackme.com/",
+      "requested": "https://tryhackme.com/",
+      "kind": "practice",
+      "roles": [
+        "start",
+        "red",
+        "blue"
+      ],
+      "note": "Guided rooms that hold your hand at the start and let go gradually. The gentlest entry.",
+      "state": "ok",
+      "status": 200,
+      "host": "tryhackme.com"
+    },
+    {
+      "url": "https://www.hackthebox.com/",
+      "requested": "https://www.hackthebox.com/",
+      "kind": "practice",
+      "roles": [
+        "red",
+        "ctf"
+      ],
+      "note": "Machines to break with no guidance. Move here once guided rooms feel slow.",
+      "state": "ok",
+      "status": 200,
+      "host": "www.hackthebox.com"
+    },
+    {
+      "url": "https://portswigger.net/web-security",
+      "requested": "https://portswigger.net/web-security",
+      "kind": "practice",
+      "roles": [
+        "start",
+        "appsec"
+      ],
+      "note": "The Web Security Academy. Free, thorough, and the best web application training that exists.",
+      "state": "ok",
+      "status": 200,
+      "host": "portswigger.net"
+    },
+    {
+      "url": "https://overthewire.org/wargames/",
+      "requested": "https://overthewire.org/wargames/",
+      "kind": "practice",
+      "roles": [
+        "start",
+        "ctf"
+      ],
+      "note": "Wargames over SSH that teach Linux and binary basics one small puzzle at a time.",
+      "state": "ok",
+      "status": 200,
+      "host": "overthewire.org"
+    },
+    {
+      "url": "https://pwn.college/",
+      "requested": "https://pwn.college/",
+      "kind": "practice",
+      "roles": [
+        "ctf"
+      ],
+      "note": "A university course on exploitation, released free with its lectures and challenges.",
+      "state": "ok",
+      "status": 200,
+      "host": "pwn.college"
+    },
+    {
+      "url": "https://cryptohack.org/",
+      "requested": "https://cryptohack.org/",
+      "kind": "practice",
+      "roles": [
+        "ctf"
+      ],
+      "note": "Cryptography as a set of puzzles rather than a textbook.",
+      "state": "ok",
+      "status": 200,
+      "host": "cryptohack.org"
+    },
+    {
+      "url": "https://www.root-me.org/",
+      "requested": "https://www.root-me.org/",
+      "kind": "practice",
+      "roles": [
+        "ctf",
+        "red"
+      ],
+      "note": "A very large challenge archive across every category, free and long running.",
+      "state": "ok",
+      "status": 200,
+      "host": "www.root-me.org"
+    },
+    {
+      "url": "https://exploit.education/",
+      "requested": "https://exploit.education/",
+      "kind": "practice",
+      "roles": [
+        "ctf"
+      ],
+      "note": "Virtual machines built purely to teach memory corruption in order of difficulty.",
+      "state": "ok",
+      "status": 200,
+      "host": "exploit.education"
+    },
+    {
+      "url": "https://microcorruption.com/",
+      "requested": "https://microcorruption.com/",
+      "kind": "practice",
+      "roles": [
+        "ctf"
+      ],
+      "note": "Embedded exploitation in the browser, with a debugger built in. Unusually well made.",
+      "state": "ok",
+      "status": 200,
+      "host": "microcorruption.com"
+    },
+    {
+      "url": "https://www.vulnhub.com/",
+      "requested": "https://www.vulnhub.com/",
+      "kind": "practice",
+      "roles": [
+        "red",
+        "start"
+      ],
+      "note": "Downloadable vulnerable machines to run in your own lab, no account needed.",
+      "state": "ok",
+      "status": 200,
+      "host": "www.vulnhub.com"
+    },
+    {
+      "url": "https://cyberdefenders.org/",
+      "requested": "https://cyberdefenders.org/",
+      "kind": "practice",
+      "roles": [
+        "blue"
+      ],
+      "note": "Blue team challenges built on real artefacts. The defensive answer to Hack The Box.",
+      "state": "ok",
+      "status": 200,
+      "host": "cyberdefenders.org"
+    },
+    {
+      "url": "https://letsdefend.io/",
+      "requested": "https://letsdefend.io/",
+      "kind": "practice",
+      "roles": [
+        "blue"
+      ],
+      "note": "A simulated SOC where you work real alerts to a conclusion.",
+      "state": "ok",
+      "status": 200,
+      "host": "letsdefend.io"
+    },
+    {
+      "url": "https://blueteamlabs.online/",
+      "requested": "https://blueteamlabs.online/",
+      "kind": "practice",
+      "roles": [
+        "blue"
+      ],
+      "note": "Investigation and incident response exercises with a scoring system.",
+      "state": "ok",
+      "status": 200,
+      "host": "blueteamlabs.online"
+    },
+    {
+      "url": "https://hackthissite.org/",
+      "requested": "https://hackthissite.org/",
+      "kind": "practice",
+      "roles": [
+        "start"
+      ],
+      "note": "One of the oldest free practice sites and still a reasonable first hour.",
+      "state": "ok",
+      "status": 200,
+      "host": "hackthissite.org"
+    },
+    {
+      "url": "https://ctftime.org/",
+      "requested": "https://ctftime.org/",
+      "kind": "ctf",
+      "roles": [
+        "ctf"
+      ],
+      "note": "The calendar and ranking for competitions worldwide. Start here to find one running.",
+      "state": "ok",
+      "status": 200,
+      "host": "ctftime.org"
+    },
+    {
+      "url": "https://picoctf.org/",
+      "requested": "https://picoctf.org/",
+      "kind": "ctf",
+      "roles": [
+        "start",
+        "ctf"
+      ],
+      "note": "Built for school students, which makes it the best on ramp for adults too.",
+      "state": "ok",
+      "status": 200,
+      "host": "picoctf.org"
+    },
+    {
+      "url": "https://attack.mitre.org/",
+      "requested": "https://attack.mitre.org/",
+      "kind": "docs",
+      "roles": [
+        "blue",
+        "red",
+        "intel",
+        "grc"
+      ],
+      "note": "The catalogue of adversary techniques that almost everything else maps to. Learn its structure.",
+      "state": "ok",
+      "status": 200,
+      "host": "attack.mitre.org"
+    },
+    {
+      "url": "https://d3fend.mitre.org/",
+      "requested": "https://d3fend.mitre.org/",
+      "kind": "docs",
+      "roles": [
+        "blue"
+      ],
+      "note": "The defensive counterpart to ATT&CK, mapping countermeasures to techniques.",
+      "state": "ok",
+      "status": 200,
+      "host": "d3fend.mitre.org"
+    },
+    {
+      "url": "https://capec.mitre.org/",
+      "requested": "https://capec.mitre.org/",
+      "kind": "docs",
+      "roles": [
+        "appsec",
+        "red"
+      ],
+      "note": "Attack patterns described at the level of design rather than implementation.",
+      "state": "ok",
+      "status": 200,
+      "host": "capec.mitre.org"
+    },
+    {
+      "url": "https://cwe.mitre.org/",
+      "requested": "https://cwe.mitre.org/",
+      "kind": "docs",
+      "roles": [
+        "appsec"
+      ],
+      "note": "The taxonomy of software weakness types. What a vulnerability is an instance of.",
+      "state": "ok",
+      "status": 200,
+      "host": "cwe.mitre.org"
+    },
+    {
+      "url": "https://www.cve.org/",
+      "requested": "https://www.cve.org/",
+      "kind": "docs",
+      "roles": [
+        "blue",
+        "appsec"
+      ],
+      "note": "The identifier scheme for publicly known vulnerabilities.",
+      "state": "ok",
+      "status": 200,
+      "host": "www.cve.org"
+    },
+    {
+      "url": "https://nvd.nist.gov/",
+      "requested": "https://nvd.nist.gov/",
+      "kind": "docs",
+      "roles": [
+        "blue",
+        "appsec"
+      ],
+      "note": "Severity scores, affected versions and references for published vulnerabilities.",
+      "state": "ok",
+      "status": 200,
+      "host": "nvd.nist.gov"
+    },
+    {
+      "url": "https://owasp.org/",
+      "requested": "https://owasp.org/",
+      "kind": "docs",
+      "roles": [
+        "appsec",
+        "start"
+      ],
+      "note": "The open application security community. Most of the guides you will read start here.",
+      "state": "ok",
+      "status": 200,
+      "host": "owasp.org"
+    },
+    {
+      "url": "https://gtfobins.org/",
+      "requested": "https://gtfobins.org/",
+      "kind": "docs",
+      "roles": [
+        "red",
+        "ctf"
+      ],
+      "note": "Unix binaries that can be abused to escape restrictions or escalate. Check before giving up.",
+      "state": "ok",
+      "status": 200,
+      "host": "gtfobins.org"
+    },
+    {
+      "url": "https://lolbas-project.github.io/",
+      "requested": "https://lolbas-project.github.io/",
+      "kind": "docs",
+      "roles": [
+        "red",
+        "blue"
+      ],
+      "note": "The Windows equivalent, listing signed binaries that attackers live off.",
+      "state": "ok",
+      "status": 200,
+      "host": "lolbas-project.github.io"
+    },
+    {
+      "url": "https://hacktricks.wiki/en/index.html",
+      "requested": "https://book.hacktricks.wiki/",
+      "kind": "docs",
+      "roles": [
+        "red",
+        "ctf"
+      ],
+      "note": "An enormous practical wiki of techniques per situation. Messy and consistently useful.",
+      "state": "moved",
+      "status": 200,
+      "host": "hacktricks.wiki"
+    },
+    {
+      "url": "https://www.exploit-db.com/",
+      "requested": "https://www.exploit-db.com/",
+      "kind": "docs",
+      "roles": [
+        "red"
+      ],
+      "note": "An archive of public exploits and the papers behind them.",
+      "state": "ok",
+      "status": 200,
+      "host": "www.exploit-db.com"
+    },
+    {
+      "url": "https://ippsec.rocks/",
+      "requested": "https://ippsec.rocks/",
+      "kind": "docs",
+      "roles": [
+        "ctf",
+        "red"
+      ],
+      "note": "Searchable index of walkthrough videos by technique, so you can find who explained a thing.",
+      "state": "ok",
+      "status": 200,
+      "host": "ippsec.rocks"
+    },
+    {
+      "url": "https://www.nist.gov/cyberframework",
+      "requested": "https://www.nist.gov/cyberframework",
+      "kind": "standard",
+      "roles": [
+        "grc"
+      ],
+      "note": "The NIST Cybersecurity Framework. The vocabulary most other frameworks translate into.",
+      "state": "ok",
+      "status": 200,
+      "host": "www.nist.gov"
+    },
+    {
+      "url": "https://csrc.nist.gov/",
+      "requested": "https://csrc.nist.gov/",
+      "kind": "standard",
+      "roles": [
+        "grc"
+      ],
+      "note": "NIST's publication library, including the 800 series most controls trace back to.",
+      "state": "ok",
+      "status": 200,
+      "host": "csrc.nist.gov"
+    },
+    {
+      "url": "https://www.cisecurity.org/controls",
+      "requested": "https://www.cisecurity.org/controls",
+      "kind": "standard",
+      "roles": [
+        "grc"
+      ],
+      "note": "The CIS Critical Security Controls, ordered by what to do first.",
+      "state": "ok",
+      "status": 200,
+      "host": "www.cisecurity.org"
+    },
+    {
+      "url": "https://www.cisecurity.org/cis-benchmarks",
+      "requested": "https://www.cisecurity.org/cis-benchmarks",
+      "kind": "standard",
+      "roles": [
+        "grc",
+        "blue"
+      ],
+      "note": "Configuration baselines per platform, and the source most hardening tools check against.",
+      "state": "ok",
+      "status": 200,
+      "host": "www.cisecurity.org"
+    },
+    {
+      "url": "https://www.iso.org/standard/27001",
+      "requested": "https://www.iso.org/standard/27001",
+      "kind": "standard",
+      "roles": [
+        "grc"
+      ],
+      "note": "The management system standard organisations get certified against. Paid, but this is the source.",
+      "state": "blocked",
+      "status": 403,
+      "host": "www.iso.org"
+    },
+    {
+      "url": "https://www.pcisecuritystandards.org/",
+      "requested": "https://www.pcisecuritystandards.org/",
+      "kind": "standard",
+      "roles": [
+        "grc"
+      ],
+      "note": "Where the payment card standards are published, rather than a summary of them.",
+      "state": "ok",
+      "status": 200,
+      "host": "www.pcisecuritystandards.org"
+    },
+    {
+      "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix",
+      "requested": "https://cloudsecurityalliance.org/research/cloud-controls-matrix",
+      "kind": "standard",
+      "roles": [
+        "grc",
+        "cloud"
+      ],
+      "note": "A cloud control framework already mapped to the other major standards.",
+      "state": "ok",
+      "status": 200,
+      "host": "cloudsecurityalliance.org"
+    },
+    {
+      "url": "https://www.enisa.europa.eu/",
+      "requested": "https://www.enisa.europa.eu/",
+      "kind": "standard",
+      "roles": [
+        "grc",
+        "intel"
+      ],
+      "note": "The European agency's threat landscape reports and guidance, free to read.",
+      "state": "ok",
+      "status": 200,
+      "host": "www.enisa.europa.eu"
+    },
+    {
+      "url": "https://www.shodan.io/",
+      "requested": "https://www.shodan.io/",
+      "kind": "lookup",
+      "roles": [
+        "intel",
+        "red",
+        "ics"
+      ],
+      "note": "Searches what is exposed on the internet by service rather than by page content.",
+      "state": "blocked",
+      "status": 403,
+      "host": "www.shodan.io"
+    },
+    {
+      "url": "https://search.censys.io/",
+      "requested": "https://search.censys.io/",
+      "kind": "lookup",
+      "roles": [
+        "intel",
+        "red"
+      ],
+      "note": "The other internet wide scan index. Worth checking both, they disagree usefully.",
+      "state": "blocked",
+      "status": 403,
+      "host": "search.censys.io"
+    },
+    {
+      "url": "https://crt.sh/",
+      "requested": "https://crt.sh/",
+      "kind": "lookup",
+      "roles": [
+        "intel",
+        "red"
+      ],
+      "note": "Certificate transparency search. Finds subdomains that never appear in DNS lists.",
+      "state": "ok",
+      "status": 200,
+      "host": "crt.sh"
+    },
+    {
+      "url": "https://urlscan.io/",
+      "requested": "https://urlscan.io/",
+      "kind": "lookup",
+      "roles": [
+        "intel",
+        "blue"
+      ],
+      "note": "Submits a URL and reports what the page actually loaded, safely and publicly.",
+      "state": "ok",
+      "status": 200,
+      "host": "urlscan.io"
+    },
+    {
+      "url": "https://www.virustotal.com/gui/",
+      "requested": "https://www.virustotal.com/",
+      "kind": "lookup",
+      "roles": [
+        "blue",
+        "research"
+      ],
+      "note": "Multi engine file and URL reputation. Remember that uploads become visible to others.",
+      "state": "ok",
+      "status": 200,
+      "host": "www.virustotal.com"
+    },
+    {
+      "url": "https://bazaar.abuse.ch/",
+      "requested": "https://bazaar.abuse.ch/",
+      "kind": "lookup",
+      "roles": [
+        "research",
+        "blue"
+      ],
+      "note": "A free malware sample repository for researchers, with hashes and tags.",
+      "state": "ok",
+      "status": 200,
+      "host": "bazaar.abuse.ch"
+    },
+    {
+      "url": "https://urlhaus.abuse.ch/",
+      "requested": "https://urlhaus.abuse.ch/",
+      "kind": "lookup",
+      "roles": [
+        "blue",
+        "intel"
+      ],
+      "note": "Tracks URLs used for malware distribution, and publishes usable blocklists.",
+      "state": "ok",
+      "status": 200,
+      "host": "urlhaus.abuse.ch"
+    },
+    {
+      "url": "https://haveibeenpwned.com/",
+      "requested": "https://haveibeenpwned.com/",
+      "kind": "lookup",
+      "roles": [
+        "start",
+        "blue"
+      ],
+      "note": "Checks whether an address appears in a known breach. The first thing to show a non specialist.",
+      "state": "ok",
+      "status": 200,
+      "host": "haveibeenpwned.com"
+    },
+    {
+      "url": "https://www.abuseipdb.com/",
+      "requested": "https://www.abuseipdb.com/",
+      "kind": "lookup",
+      "roles": [
+        "blue"
+      ],
+      "note": "Community reported reputation for addresses seen attacking.",
+      "state": "blocked",
+      "status": 403,
+      "host": "www.abuseipdb.com"
+    },
+    {
+      "url": "https://any.run/",
+      "requested": "https://any.run/",
+      "kind": "sandbox",
+      "roles": [
+        "research",
+        "blue"
+      ],
+      "note": "Interactive sandbox where you can click through the infection as it runs.",
+      "state": "ok",
+      "status": 200,
+      "host": "any.run"
+    },
+    {
+      "url": "https://hybrid-analysis.com/",
+      "requested": "https://www.hybrid-analysis.com/",
+      "kind": "sandbox",
+      "roles": [
+        "research",
+        "blue"
+      ],
+      "note": "Automated sandbox reports, free to search even without submitting.",
+      "state": "ok",
+      "status": 200,
+      "host": "hybrid-analysis.com"
+    },
+    {
+      "url": "https://www.joesandbox.com/",
+      "requested": "https://www.joesandbox.com/",
+      "kind": "sandbox",
+      "roles": [
+        "research"
+      ],
+      "note": "Deep behavioural reports, with a free tier that is enough to learn from.",
+      "state": "blocked",
+      "status": 403,
+      "host": "www.joesandbox.com"
+    },
+    {
+      "url": "https://isc.sans.edu/",
+      "requested": "https://isc.sans.edu/",
+      "kind": "reading",
+      "roles": [
+        "blue",
+        "intel"
+      ],
+      "note": "A daily handler diary on what is actually being seen. Short and consistently worth it.",
+      "state": "ok",
+      "status": 200,
+      "host": "isc.sans.edu"
+    },
+    {
+      "url": "https://thedfirreport.com/",
+      "requested": "https://thedfirreport.com/",
+      "kind": "reading",
+      "roles": [
+        "blue",
+        "research"
+      ],
+      "note": "Full intrusion write ups with timelines and detections. The best free DFIR reading.",
+      "state": "ok",
+      "status": 200,
+      "host": "thedfirreport.com"
+    },
+    {
+      "url": "https://krebsonsecurity.com/",
+      "requested": "https://krebsonsecurity.com/",
+      "kind": "reading",
+      "roles": [
+        "start",
+        "intel"
+      ],
+      "note": "Long running investigative reporting on cybercrime, readable without a background.",
+      "state": "ok",
+      "status": 200,
+      "host": "krebsonsecurity.com"
+    },
+    {
+      "url": "https://projectzero.google/",
+      "requested": "https://googleprojectzero.blogspot.com/",
+      "kind": "reading",
+      "roles": [
+        "research",
+        "appsec"
+      ],
+      "note": "Deep vulnerability research written up properly. Hard, and worth the effort.",
+      "state": "moved",
+      "status": 200,
+      "host": "projectzero.google"
+    },
+    {
+      "url": "https://www.sans.org/white-papers",
+      "requested": "https://www.sans.org/white-papers/",
+      "kind": "reading",
+      "roles": [
+        "grc",
+        "blue"
+      ],
+      "note": "A large free paper archive, useful when you need a citable source.",
+      "state": "ok",
+      "status": 200,
+      "host": "www.sans.org"
+    },
+    {
+      "url": "https://www.first.org/cvss/",
+      "requested": "https://www.first.org/cvss/",
+      "kind": "docs",
+      "roles": [
+        "blue",
+        "grc"
+      ],
+      "note": "How severity scores are actually calculated, which matters when you disagree with one.",
+      "state": "ok",
+      "status": 200,
+      "host": "www.first.org"
+    },
+    {
+      "url": "https://www.comptia.org/en-us/certifications/security/",
+      "requested": "https://www.comptia.org/certifications/security",
+      "kind": "cert",
+      "roles": [
+        "start",
+        "grc"
+      ],
+      "note": "Security+ is the usual first certification and the one most job adverts recognise.",
+      "state": "ok",
+      "status": 200,
+      "host": "www.comptia.org"
+    },
+    {
+      "url": "https://www.offsec.com/courses/pen-200/",
+      "requested": "https://www.offsec.com/courses/pen-200/",
+      "kind": "cert",
+      "roles": [
+        "red"
+      ],
+      "note": "OSCP. Practical, exhausting, and still the offensive certification people respect.",
+      "state": "ok",
+      "status": 200,
+      "host": "www.offsec.com"
+    },
+    {
+      "url": "https://www.giac.org/",
+      "requested": "https://www.giac.org/",
+      "kind": "cert",
+      "roles": [
+        "blue",
+        "grc"
+      ],
+      "note": "GIAC certifications, expensive and technically serious, usually employer funded.",
+      "state": "ok",
+      "status": 200,
+      "host": "www.giac.org"
+    },
+    {
+      "url": "https://www.isc2.org/certifications/cissp",
+      "requested": "https://www.isc2.org/certifications/cissp",
+      "kind": "cert",
+      "roles": [
+        "grc"
+      ],
+      "note": "CISSP is broad rather than deep, and is what management roles ask for.",
+      "state": "ok",
+      "status": 200,
+      "host": "www.isc2.org"
+    },
+    {
+      "url": "https://www.isaca.org/credentialing/cisa",
+      "requested": "https://www.isaca.org/credentialing/cisa",
+      "kind": "cert",
+      "roles": [
+        "grc"
+      ],
+      "note": "CISA is the audit credential, and the natural one if compliance is your direction.",
+      "state": "ok",
+      "status": 200,
+      "host": "www.isaca.org"
+    },
+    {
+      "url": "https://www.cbk.gov.kw/en/",
+      "requested": "https://www.cbk.gov.kw/en/",
+      "kind": "regional",
+      "roles": [
+        "grc"
+      ],
+      "note": "The Central Bank of Kuwait, which issues the resilience framework banks are held to.",
+      "state": "ok",
+      "status": 200,
+      "host": "www.cbk.gov.kw"
+    },
+    {
+      "url": "https://www.citra.gov.kw/sites/ar/Pages/Home.aspx",
+      "requested": "https://www.citra.gov.kw/",
+      "kind": "regional",
+      "roles": [
+        "grc"
+      ],
+      "note": "Kuwait's communications and information technology regulatory authority.",
+      "state": "ok",
+      "status": 200,
+      "host": "www.citra.gov.kw"
+    },
+    {
+      "url": "https://nca.gov.sa/en/",
+      "requested": "https://nca.gov.sa/en/",
+      "kind": "regional",
+      "roles": [
+        "grc"
+      ],
+      "note": "Saudi Arabia's National Cybersecurity Authority, publisher of the essential controls.",
+      "state": "ok",
+      "status": 200,
+      "host": "nca.gov.sa"
+    },
+    {
+      "url": "https://www.sama.gov.sa/en-US/Pages/default.aspx",
+      "requested": "https://www.sama.gov.sa/en-US/",
+      "kind": "regional",
+      "roles": [
+        "grc"
+      ],
+      "note": "The Saudi central bank, whose cybersecurity framework is widely used as a Gulf reference.",
+      "state": "ok",
+      "status": 200,
+      "host": "www.sama.gov.sa"
+    },
+    {
+      "url": "https://siteq8.github.io/Markaz/",
+      "requested": "https://siteq8.github.io/Markaz/",
+      "kind": "regional",
+      "roles": [
+        "grc",
+        "research"
+      ],
+      "note": "Kuwait's regulatory instruments published as open data, with crosswalks and research notes.",
+      "state": "ok",
+      "status": 200,
+      "host": "siteq8.github.io"
     }
   ]
 }

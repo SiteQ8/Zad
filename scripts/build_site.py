@@ -7,6 +7,7 @@ ROOT = Path(__file__).resolve().parent.parent
 import re
 cat = json.loads((ROOT / "data" / "catalog.json").read_text(encoding="utf-8"))
 ar = json.loads((ROOT / "data" / "notes.ar.json").read_text(encoding="utf-8"))
+arw = json.loads((ROOT / "data" / "notes-web.ar.json").read_text(encoding="utf-8"))
 
 # Each language mode must be complete on its own terms, so a missing or impure
 # note fails the build rather than surfacing as English inside the Arabic page.
@@ -22,7 +23,17 @@ for tool in cat["tools"]:
     if arabic_script.search(tool["note"]):
         faults.append(f"{tool['repo']}: Arabic script in the English note")
     tool["noteAr"] = note
+for site in cat["sites"]:
+    note = arw.get(site["requested"], "")
+    if not note:
+        faults.append(f"{site['requested']}: no Arabic note")
+    elif latin_word.search(note):
+        faults.append(f"{site['requested']}: Latin words in the Arabic note")
+    if arabic_script.search(site["note"]):
+        faults.append(f"{site['requested']}: Arabic script in the English note")
+    site["noteAr"] = note
 extra = set(ar) - {t["repo"] for t in cat["tools"]}
+extra |= {u + " (web)" for u in set(arw) - {s["requested"] for s in cat["sites"]}}
 for e in sorted(extra):
     faults.append(f"{e}: Arabic note for a tool not in the catalogue")
 if faults:
@@ -39,7 +50,7 @@ if "__CATALOG__" in html:
 # What can drift is a hand written figure sneaking back into the template, so
 # assert that the readout is still computed rather than typed.
 s = cat["stats"]
-if "D.stats.tools" not in tpl:
+if "D.stats.tools" not in tpl or "D.stats.sites" not in tpl:
     print("readout figures are no longer derived from the data", file=sys.stderr)
     sys.exit(1)
 
