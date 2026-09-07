@@ -1,0 +1,35 @@
+name: Refresh catalogue
+
+on:
+  schedule:
+    - cron: "0 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve every tool against GitHub
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/build.py
+
+      - name: Rebuild the page
+        run: python3 scripts/build_site.py
+
+      - name: Commit if anything changed
+        run: |
+          git config user.name "SiteQ8"
+          git config user.email "311682+SiteQ8@users.noreply.github.com"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "Refresh the catalogue from the GitHub API."
+            git push
+          else
+            echo "Catalogue already current."
+          fi

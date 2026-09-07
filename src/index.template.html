@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zad | Open source security tooling, verified</title>
+<meta name="description" content="A curated, live verified catalogue of open source cybersecurity tools for people starting out, playing CTF, working GRC, or doing research.">
+<style>
+:root{
+  --bg:#08090c; --panel:#0e1015; --panel2:#12151b; --raise:#171b23;
+  --rule:#1d222b; --rule-hi:#2b323d;
+  --ink:#e9ecf1; --dim:#98a1ae; --faint:#5e6875;
+  --gold:#e8a33d; --ok:#3ecf8e; --warn:#e0a32e; --bad:#e0685c;
+  --accent:var(--gold);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  --ar:"SF Arabic","Segoe UI","Noto Naskh Arabic","Geeza Pro",Tahoma,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --lift:inset 0 1px 0 rgba(255,255,255,.05);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg)}
+body{
+  background:radial-gradient(1200px 500px at 50% -10%,color-mix(in srgb,var(--accent) 11%,transparent),transparent 70%),var(--bg);
+  color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;
+  letter-spacing:-0.005em;font-variant-numeric:tabular-nums;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .4s;
+}
+html[dir="rtl"] body{font-family:var(--ar);line-height:1.85;letter-spacing:normal}
+a{color:inherit}button{font-family:inherit}
+.w{max-width:1140px;margin:0 auto;padding:0 22px}
+
+.top{border-bottom:1px solid var(--rule);background:rgba(8,9,12,.9);
+     backdrop-filter:blur(10px);position:sticky;top:0;z-index:60}
+.top-in{display:flex;align-items:center;gap:13px;padding:12px 0}
+.sig{width:34px;height:34px;flex:none;border-radius:9px;display:grid;place-items:center;
+     background:linear-gradient(150deg,var(--accent),color-mix(in srgb,var(--accent) 55%,#000));
+     color:#140c02;font-family:var(--ar);font-size:17px;font-weight:700;box-shadow:var(--lift);
+     transition:background .4s}
+.nm{flex:1;min-width:0}
+.nm b{display:block;font-size:15.5px;font-weight:650;letter-spacing:-0.015em;line-height:1.25}
+html[dir="rtl"] .nm b{letter-spacing:normal}
+.nm span{display:block;font-size:11.5px;color:var(--faint);line-height:1.35}
+.lang{background:transparent;border:1px solid var(--rule-hi);color:var(--dim);
+      padding:6px 12px;border-radius:7px;cursor:pointer;font-size:12.5px;font-weight:600}
+.lang:hover{border-color:var(--accent);color:var(--accent)}
+
+.head{padding:30px 0 8px}
+.head h1{font-size:27px;font-weight:680;letter-spacing:-0.03em;max-width:24ch;line-height:1.2}
+html[dir="rtl"] .head h1{letter-spacing:normal;line-height:1.45;max-width:28ch}
+.head>p{max-width:64ch;color:var(--dim);font-size:15px;margin-top:11px}
+.ro{display:flex;flex-wrap:wrap;gap:0;font-family:var(--mono);font-size:11.5px;margin-top:16px}
+.ro i{font-style:normal;display:inline-flex;align-items:baseline;gap:6px;
+      color:var(--faint);margin-inline-end:22px;white-space:nowrap}
+.ro i b{color:var(--accent);font-weight:600}
+html[dir="rtl"] .ro i{font-family:var(--ar)}
+
+/* Role picker */
+.roles{display:grid;grid-template-columns:repeat(auto-fill,minmax(214px,1fr));gap:9px;margin:22px 0 6px}
+.role{
+  background:linear-gradient(168deg,var(--panel2),var(--panel));border:1px solid var(--rule);
+  border-radius:12px;padding:14px 15px;cursor:pointer;text-align:start;color:var(--ink);
+  box-shadow:var(--lift);border-top:2px solid;transition:transform .12s,border-color .12s;
+}
+.role:hover{transform:translateY(-2px);border-color:var(--rule-hi)}
+.role.on{background:linear-gradient(168deg,var(--raise),var(--panel2))}
+.role b{display:flex;align-items:baseline;gap:8px;font-size:14.5px;font-weight:650}
+.role b u{text-decoration:none;font-family:var(--mono);font-size:11px;color:var(--faint);
+          margin-inline-start:auto}
+.role span{display:block;font-size:12.3px;color:var(--dim);line-height:1.5;margin-top:5px}
+html[dir="rtl"] .role span{line-height:1.72;font-size:13px}
+
+/* Toolbar */
+.bar{position:sticky;top:59px;z-index:40;background:var(--bg);padding:14px 0 10px;
+     border-bottom:1px solid var(--rule)}
+.q{width:100%;background:var(--panel2);border:1px solid var(--rule-hi);color:var(--ink);
+   padding:11px 15px;border-radius:10px;font-size:14.5px;font-family:inherit}
+.q:focus{outline:none;border-color:var(--accent)}
+.q::placeholder{color:var(--faint)}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px;align-items:center}
+.f{background:transparent;border:1px solid var(--rule);color:var(--dim);padding:4px 10px;
+   border-radius:99px;cursor:pointer;font-size:12px;white-space:nowrap;display:inline-flex;
+   align-items:center;gap:6px}
+.f:hover{color:var(--ink);border-color:var(--rule-hi)}
+.f.on{background:var(--accent);border-color:var(--accent);color:#140c02;font-weight:650}
+.f u{text-decoration:none;font-family:var(--mono);font-size:10.5px;opacity:.65}
+.dot{width:7px;height:7px;border-radius:99px;flex:none}
+.d-active{background:var(--ok)}.d-slow{background:var(--warn)}
+.d-dormant{background:var(--bad)}.d-archived{background:var(--faint)}
+
+/* Groups and cards */
+.grp{padding:22px 0 0}
+.grp-h{display:flex;align-items:baseline;gap:9px;padding-bottom:8px;
+       border-bottom:1px solid var(--rule-hi)}
+.grp-h h2{font-size:14px;font-weight:650}
+.grp-h em{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--faint);
+          margin-inline-start:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(304px,1fr));gap:9px;margin-top:11px}
+.card{background:linear-gradient(168deg,var(--panel2),var(--panel));border:1px solid var(--rule);
+      border-radius:11px;padding:13px 14px;display:flex;flex-direction:column;gap:7px;
+      box-shadow:var(--lift);text-decoration:none;color:inherit}
+.card:hover{border-color:var(--accent)}
+.c-h{display:flex;align-items:center;gap:8px}
+.c-h b{font-family:var(--mono);font-size:13.5px;font-weight:650;letter-spacing:-0.02em;
+       overflow-wrap:anywhere}
+.card:hover .c-h b{color:var(--accent)}
+.c-h s{text-decoration:none;margin-inline-start:auto;font-family:var(--mono);font-size:11px;
+       color:var(--warn);white-space:nowrap}
+.c-note{font-size:13px;color:var(--dim);line-height:1.53;flex:1}
+html[dir="rtl"] .c-note{line-height:1.78;font-size:13.8px}
+.c-m{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-family:var(--mono);
+     font-size:10.5px;color:var(--faint)}
+.tag{border:1px solid var(--rule-hi);padding:2px 7px;border-radius:5px}
+.up{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--rule-hi);
+    padding:2px 7px;border-radius:5px}
+html[dir="rtl"] .up{font-family:var(--ar)}
+.sup{margin-top:2px;font-size:11.5px;color:var(--warn);background:#221806;
+     border:1px solid #543f13;border-radius:6px;padding:4px 8px}
+html[dir="rtl"] .sup{font-family:var(--ar)}
+.none{color:var(--faint);padding:34px 0;font-size:14px;text-align:center}
+
+footer{border-top:1px solid var(--rule);margin-top:38px;padding:20px 0 40px;
+       color:var(--faint);font-size:12.5px}
+.fi{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.fi a{color:var(--dim);text-decoration:none}
+.fi a:hover{color:var(--accent)}
+
+@media(max-width:680px){
+  .w{padding:0 15px}
+  .head{padding:22px 0 4px}
+  .head h1{font-size:22px}
+  .head>p{font-size:14px}
+  .roles{grid-template-columns:1fr;gap:7px}
+  .role{padding:12px 13px}
+  .bar{top:56px}
+  .filters{flex-wrap:nowrap;overflow-x:auto;margin:9px -15px 0;padding:0 15px 8px;
+           scrollbar-width:none}
+  .filters::-webkit-scrollbar{display:none}
+  .f{flex:none}
+  .cards{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="w"><div class="top-in">
+  <div class="sig">ز</div>
+  <div class="nm"><b id="nm"></b><span id="tg"></span></div>
+  <button class="lang" id="lang" onclick="toggle()"></button>
+</div></div></header>
+
+<div class="w">
+  <div class="head">
+    <h1 id="h1"></h1>
+    <p id="lede"></p>
+    <div class="ro" id="ro"></div>
+    <div class="roles" id="roles"></div>
+  </div>
+
+  <div class="bar">
+    <input class="q" id="q" oninput="render()" autocomplete="off" spellcheck="false">
+    <div class="filters" id="filters"></div>
+  </div>
+
+  <div id="out"></div>
+</div>
+
+<footer><div class="w"><div class="fi">
+  <span id="f1"></span>
+  <span><a href="https://github.com/SiteQ8/Zad" id="f2"></a></span>
+</div></div></footer>
+
+<script>
+const D = /*__CATALOG__*/null;
+
+const ROLE_COLOR = {start:"#3ecf8e",ctf:"#a879f0",red:"#e0685c",blue:"#4a9edb",
+  appsec:"#e8a33d",cloud:"#38bec9",grc:"#2dd4a7",intel:"#c084fc",research:"#e8b13d"};
+
+const T={
+ en:{nm:"Zad",tg:"Open source security tooling, verified",btn:"العربية",
+  h1:"Everything you need to start, in tools that are still alive.",
+  lede:"A curated catalogue for people beginning in security, playing capture the flag, running a compliance programme, or doing research. Every entry is resolved against GitHub on each build, so a project that has been archived, renamed or abandoned says so here instead of wasting your afternoon.",
+  ro:[["94","tools"],["9","paths"],["18","languages"],["100%","verified on build"]],
+  q:"Search tools, languages, topics",
+  all:"Everything",
+  up:{active:"maintained",slow:"quiet",dormant:"dormant",archived:"archived"},
+  supersede:"Stopped. Use instead:",
+  none:"Nothing matches. Try a broader filter.",
+  f1:"Rebuilt from the GitHub API, not maintained by hand.",f2:"github.com/SiteQ8/Zad",
+  stars:"stars"},
+ ar:{nm:"زاد",tg:"أدوات أمنية مفتوحة المصدر، مُتحقَّق منها",btn:"English",
+  h1:"كل ما تحتاجه للبداية، في أدوات ما زالت حية.",
+  lede:"كتالوج منتقى لمن يبدأ في الأمن السيبراني أو يخوض مسابقات التقاط العلم أو يدير برنامج امتثال أو يشتغل بالبحث، ويُحَل كل مدخل أمام غِت هَب في كل بناء، فالمشروع المؤرشف أو المهجور أو الذي غُيّر اسمه يقول ذلك هنا بدل أن يضيّع عليك يوما.",
+  ro:[["٩٤","أداة"],["٩","مسارات"],["١٨","لغة"],["١٠٠٪","متحقق منه"]],
+  q:"ابحث في الأدوات واللغات والمواضيع",
+  all:"الكل",
+  up:{active:"مصانة",slow:"هادئة",dormant:"راكدة",archived:"مؤرشفة"},
+  supersede:"توقفت، والبديل:",
+  none:"لا شيء يطابق، جرّب تصفية أوسع.",
+  f1:"يُبنى من واجهة غِت هَب البرمجية لا يدويا.",f2:"github.com/SiteQ8/Zad",
+  stars:"نجمة"}
+};
+
+let lang="en", role="*", upkeep="*";
+const t=()=>T[lang], L=()=>lang==="ar";
+const el=i=>document.getElementById(i);
+const esc=x=>String(x==null?"":x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const num=n=>n.toLocaleString(L()?"ar-EG":"en");
+
+function toggle(){
+  lang=lang==="en"?"ar":"en";
+  document.documentElement.lang=lang;
+  document.documentElement.dir=L()?"rtl":"ltr";
+  paint();render();
+}
+function setRole(r){
+  role=(role===r)?"*":r;
+  document.documentElement.style.setProperty("--accent",
+    role==="*"?"#e8a33d":ROLE_COLOR[role]);
+  location.hash=role==="*"?"":"r/"+role;
+  paint();render();
+}
+function setUp(u){upkeep=(upkeep===u)?"*":u;paint();render();}
+
+function paint(){
+  const s=t();
+  document.title=s.nm+" | "+s.tg;
+  el("nm").textContent=s.nm;el("tg").textContent=s.tg;el("lang").textContent=s.btn;
+  el("h1").textContent=s.h1;el("lede").textContent=s.lede;
+  el("f1").textContent=s.f1;el("f2").textContent=s.f2;
+  el("q").placeholder=s.q;
+  el("ro").innerHTML=s.ro.map(function(x){
+    return '<i><b dir="ltr">'+x[0]+'</b>'+x[1]+'</i>';}).join("");
+
+  el("roles").innerHTML=D.roles.map(function(r){
+    return '<button class="role'+(role===r.id?" on":"")+'" style="border-top-color:'+
+      ROLE_COLOR[r.id]+'" onclick="setRole(\''+r.id+'\')">'+
+      '<b>'+(L()?r.ar:r.en)+'<u dir="ltr">'+D.stats.per_role[r.id]+'</u></b>'+
+      '<span>'+(L()?r.arD:r.enD)+'</span></button>';
+  }).join("");
+
+  const uc={};
+  D.tools.forEach(function(x){uc[x.upkeep]=(uc[x.upkeep]||0)+1;});
+  el("filters").innerHTML='<button class="f'+(upkeep==="*"?" on":"")+
+    '" onclick="setUp(\'*\')">'+s.all+'<u dir="ltr">'+D.stats.tools+'</u></button>'+
+    ["active","slow","dormant","archived"].filter(function(k){return uc[k];}).map(function(k){
+      return '<button class="f'+(upkeep===k?" on":"")+'" onclick="setUp(\''+k+'\')">'+
+        '<span class="dot d-'+k+'"></span>'+s.up[k]+'<u dir="ltr">'+uc[k]+'</u></button>';
+    }).join("");
+}
+
+function render(){
+  const s=t(), term=el("q").value.trim().toLowerCase();
+  const hits=D.tools.filter(function(x){
+    if(role!=="*"&&x.roles.indexOf(role)<0)return false;
+    if(upkeep!=="*"&&x.upkeep!==upkeep)return false;
+    if(!term)return true;
+    return (x.repo+" "+x.note+" "+(x.noteAr||"")+" "+x.description+" "+
+            x.language+" "+x.topics.join(" ")).toLowerCase().indexOf(term)>-1;
+  });
+  if(!hits.length){el("out").innerHTML='<p class="none">'+s.none+'</p>';return;}
+
+  const order=Object.keys(D.categories);
+  const groups={};
+  hits.forEach(function(x){(groups[x.category]=groups[x.category]||[]).push(x);});
+
+  el("out").innerHTML=order.filter(function(c){return groups[c];}).map(function(c){
+    const cat=D.categories[c], rows=groups[c];
+    return '<section class="grp"><div class="grp-h"><h2>'+(L()?cat.ar:cat.en)+
+      '</h2><em>'+rows.length+'</em></div><div class="cards">'+
+      rows.map(card).join("")+'</div></section>';
+  }).join("");
+}
+
+function card(x){
+  const s=t();
+  const m=[];
+  if(x.language)m.push('<span class="tag" dir="ltr">'+esc(x.language)+'</span>');
+  if(x.licence&&x.licence!=="NOASSERTION")m.push('<span class="tag" dir="ltr">'+esc(x.licence)+'</span>');
+  m.push('<span class="up"><span class="dot d-'+x.upkeep+'"></span>'+s.up[x.upkeep]+'</span>');
+  m.push('<span class="tag" dir="ltr">'+x.pushed+'</span>');
+  return '<a class="card" href="'+x.url+'" target="_blank" rel="noopener">'+
+    '<div class="c-h"><b dir="ltr">'+esc(x.repo)+'</b>'+
+    '<s dir="ltr">'+num(x.stars)+'</s></div>'+
+    '<div class="c-note">'+esc(L()?(x.noteAr||x.note):x.note)+'</div>'+
+    (x.supersede?'<div class="sup">'+s.supersede+' <span dir="ltr">'+esc(x.supersede)+'</span></div>':"")+
+    '<div class="c-m">'+m.join("")+'</div></a>';
+}
+
+(function init(){
+  const h=location.hash.replace(/^#/,"");
+  if(h.indexOf("r/")===0&&ROLE_COLOR[h.slice(2)]){
+    role=h.slice(2);
+    document.documentElement.style.setProperty("--accent",ROLE_COLOR[role]);
+  }
+  paint();render();
+})();
+</script>
+</body>
+</html>
